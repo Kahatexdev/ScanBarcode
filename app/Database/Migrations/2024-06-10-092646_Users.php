@@ -30,7 +30,7 @@ class Users extends Migration
             'role' => [
                 'type' => 'ENUM',
                 'constraint' => ['packing', 'aksesoris'],
-                'default' => 'user',
+                'default' => 'packing',
             ],
         ]);
         $this->forge->addKey('id_user', true);
