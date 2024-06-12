@@ -1,0 +1,16 @@
+ERROR - 2024-06-12 02:48:30 --> mysqli_sql_exception: Can't create table `scan_barcode`.`master_input` (errno: 150 "Foreign key constraint is incorrectly formed") in D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:310
+Stack trace:
+#0 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(310): mysqli->query('CREATE TABLE `m...', 0)
+#1 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `m...')
+#2 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `m...')
+#3 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `m...')
+#4 D:\xampp\htdocs\ScanBarcode\app\Database\Migrations\2024-06-11-064822_MasterInput.php(33): CodeIgniter\Database\Forge->createTable('master_input')
+#5 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\MigrationRunner.php(867): App\Database\Migrations\MasterInput->up()
+#6 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 D:\xampp\htdocs\ScanBarcode\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}

@@ -28,6 +28,13 @@ class MasterPDK extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 25,
             ],
+            'created_at' => [
+                'type' => 'DATETIME',
+            ],
+            'admin' => [
+                'type' => 'VARCHAR',
+                'constraint' => 50,
+            ],
         ]);
         $this->forge->addKey('id_pdk', true);
         $this->forge->addForeignKey('id_po', 'master_po', 'id_po');

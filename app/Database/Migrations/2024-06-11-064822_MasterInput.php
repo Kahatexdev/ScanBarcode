@@ -24,9 +24,12 @@ class MasterInput extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 100,
             ],
+            'created_at' => [
+                'type' => 'DATETIME',
+            ],
         ]);
         $this->forge->addKey('id_data', true);
-        $this->forge->addForeignKey('id_data', 'master_pdk', 'id_data');
+        $this->forge->addForeignKey('id_pdk', 'master_pdk', 'id_pdk');
         $this->forge->createTable('master_input');
     }
 

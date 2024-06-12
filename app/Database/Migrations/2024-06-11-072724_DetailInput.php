@@ -31,6 +31,10 @@ class DetailInput extends Migration
             'created_at' => [
                 'type' => 'DATETIME',
             ],
+            'admin' => [
+                'type' => 'VARCHAR',
+                'constraint' => 50,
+            ],
         ]);
         $this->forge->addKey('id_input', true);
         $this->forge->addForeignKey('id_data', 'master_input', 'id_data');
