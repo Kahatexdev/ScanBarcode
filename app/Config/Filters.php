@@ -34,6 +34,8 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        'aksesoris' => \App\Filters\AksesorisFilter::class,
+        'packing' => \App\Filters\PackingFilter::class,
     ];
 
     /**
@@ -103,5 +105,12 @@ class Filters extends BaseFilters
      *
      * @var array<string, array<string, list<string>>>
      */
-    public array $filters = [];
+    public array $filters = [
+        'aksesoris' => [
+            'before' => ['aksesoris/*'],
+        ],
+        'packing' => [
+            'before' => ['packing/*'],
+        ],
+    ];
 }
