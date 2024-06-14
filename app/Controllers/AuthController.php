@@ -13,6 +13,7 @@ class AuthController extends BaseController
     {
         return view('Auth/index');
     }
+
     public function login()
     {
         $username = $this->request->getPost('username');
@@ -38,5 +39,11 @@ class AuthController extends BaseController
                 return redirect()->to(base_url('/login'))->withInput()->with('error', 'Invalid username or password');
                 break;
         }
+    }
+
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to(base_url('/'));
     }
 }

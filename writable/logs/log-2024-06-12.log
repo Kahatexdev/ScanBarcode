@@ -317,3 +317,14 @@ Stack trace:
 #10 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
 #11 D:\xampp\htdocs\ScanBarcode\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
 #12 {main}
+CRITICAL - 2024-06-12 09:35:43 --> ErrorException: Undefined property: App\Controllers\AccecoriesController::$AccecoriesModel
+[Method: GET, Route: ACCECORIES/halaman_utama]
+in APPPATH\Controllers\AccecoriesController.php on line 19.
+ 1 APPPATH\Controllers\AccecoriesController.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\AccecoriesController::$AccecoriesModel', 'D:\\xampp\\htdocs\\ScanBarcode\\app\\Controllers\\AccecoriesController.php', 19)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AccecoriesController->po()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AccecoriesController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')

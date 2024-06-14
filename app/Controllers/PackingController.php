@@ -9,6 +9,6 @@ class PackingController extends BaseController
 {
     public function index()
     {
-        return view('Packing/halaman_utama');
+        return view('Packing/halamanUtama');
     }
 }
