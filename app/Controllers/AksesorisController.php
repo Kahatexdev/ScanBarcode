@@ -6,15 +6,19 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\MasterPOModel;
 use App\Models\MasterPDKModel;
+use App\Models\MasterInputModel;
 
 class AksesorisController extends BaseController
 {
     protected $filters;
     protected $poModel;
     protected $pdkModel;
-    public function __construct() {
+    protected $inputModel;
+    public function __construct() 
+    {
         $this->poModel = new MasterPOModel();
         $this->pdkModel = new MasterPDKModel();
+        $this->inputModel = new MasterInputModel();
         if ($this->filters   = ['role' => ['aksesoris', session()->get('role') . '', 'acc', 'acc']] != session()->get('role')) {
             return redirect()->to(base_url('/login'));
         }
@@ -58,10 +62,23 @@ class AksesorisController extends BaseController
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     // detail PO
     public function detailPO($id_po)
     {
-        $detailPo = $this->poModel->getDetailPO($id_po);
+        $detailPo = $this->pdkModel->getDetailPO($id_po);
         $idPo = $this->poModel->getIdPO($id_po);
         $noPo = $this->poModel->getNomorPO($id_po);
 
@@ -101,6 +118,67 @@ class AksesorisController extends BaseController
         }else{
             echo "PDK Sudah Ada di Database";
         }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // detail PDK
+    public function detailPDK($id_pdk)
+    {
+        $detailPdk = $this->inputModel->getDetailPDK($id_pdk);
+        $idPdk = $this->pdkModel->getIdPDK($id_pdk);
+        $pdk = $this->pdkModel->getPDK($id_pdk);
+
+        $data = [
+            'role' => session()->get('role'),
+            'title' => 'List PDK PO ' . $pdk,
+            'id_pdk' => $idPdk,
+            'pdk' => $pdk,
+            'detailpdk' => $detailPdk,
+        ];
+        return view('Aksesoris/detailPDK', $data);
     }
 
 }
