@@ -47,12 +47,13 @@ class MasterPOModel extends Model
     public function getPo()
     {
         return $this->select('id_po,po,buyer')
-                    ->orderBy('po')
-                    ->groupBy('id_po')
-                    ->findAll();
+            ->orderBy('po')
+            ->groupBy('id_po')
+            ->findAll();
     }
 
-    public function cekDuplikatPO($validate) {
+    public function cekDuplikatPO($validate)
+    {
         $query = $this->where('po', $validate['po'])
             ->where('buyer ', $validate['buyer'])
             ->first();
@@ -62,16 +63,16 @@ class MasterPOModel extends Model
     public function getNomorPO($id_po)
     {
         return $this->select('po')
-        ->where('id_po', $id_po)
-        ->get()
-        ->getRowArray()['po'];
+            ->where('id_po', $id_po)
+            ->get()
+            ->getRowArray()['po'];
     }
 
     public function getIdPO($id_po)
     {
         return $this->select('id_po')
-        ->where('id_po', $id_po)
-        ->get()
-        ->getRowArray()['id_po'];
+            ->where('id_po', $id_po)
+            ->get()
+            ->getRowArray()['id_po'];
     }
 }

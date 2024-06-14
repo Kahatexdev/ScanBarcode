@@ -20,8 +20,9 @@ class AuthController extends BaseController
         $password = $this->request->getPost('password');
         $UserModel = new Usermodel;
         $userData = $UserModel->login($username, $password);
+        // var_dump($userData);
         if (!$userData) {
-            return redirect()->to(base_url('/login'))->withInput()->with('error', 'Invalid username or password');
+            return redirect()->to(base_url('/'))->withInput()->with('error', 'Invalid username or password');
         }
         // session
         session()->set('id_user', $userData['id']);

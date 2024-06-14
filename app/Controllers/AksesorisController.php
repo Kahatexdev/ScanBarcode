@@ -8,13 +8,14 @@ use App\Models\MasterPOModel;
 use App\Models\MasterPDKModel;
 use App\Models\MasterInputModel;
 
+
 class AksesorisController extends BaseController
 {
     protected $filters;
     protected $poModel;
     protected $pdkModel;
     protected $inputModel;
-    public function __construct() 
+    public function __construct()
     {
         $this->poModel = new MasterPOModel();
         $this->pdkModel = new MasterPDKModel();
@@ -47,18 +48,18 @@ class AksesorisController extends BaseController
             'buyer' => $buyer,
         ];
         $check = $this->poModel->cekDuplikatPO($validate);
-        if (!$check){
+        if (!$check) {
             $data = [
                 'po' => $po,
                 'buyer' => $buyer,
                 'created_at' => "NOW()",
             ];
             $insert = $this->poModel->insert($data);
-            if ($insert){
-                return view(session()->get('role') . '/');
+            if ($insert) {
+                return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('success', 'Data Berhasil Di Input');
             }
-        }else{
-            echo "PO Sudah Ada di Database";
+        } else {
+            return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('errol', 'Data PO Sudah Ada!');;
         }
     }
 
@@ -105,7 +106,7 @@ class AksesorisController extends BaseController
             'no_order' => $no_order,
         ];
         $check = $this->pdkModel->cekDuplikatPDK($validate);
-        if (!$check){
+        if (!$check) {
             $data = [
                 'id_po' => $id_po,
                 'pdk' => $pdk,
@@ -115,7 +116,7 @@ class AksesorisController extends BaseController
             ];
             // $insert = $this->poModel->insertPDK($data);
             var_dump($check);
-        }else{
+        } else {
             echo "PDK Sudah Ada di Database";
         }
     }
@@ -180,4 +181,164 @@ class AksesorisController extends BaseController
         ];
         return view('Aksesoris/detailPDK', $data);
     }
+
+    // proses input Master Barcode
+    public function inputMasterBarcode()
+    {
+        $id_pdk     = $this->request->getPost("id_pdk");
+        $barcode_real  = $this->request->getPost("barcode_real");
+
+        $validate = [
+            'id_pdk' => $id_pdk,
+            'barcode_real' => $barcode_real,
+        ];
+        $check = $this->inputModel->cekDuplikatBarcode($validate);
+        if (!$check){
+            $data = [
+                'id_pdk' => $id_pdk,
+                'barcode_real' => $barcode_real,
+                'created_at' => "NOW()",
+            ];
+            $insert = $this->poModel->insertPDK($data);
+            if ($insert) {
+                return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('success', 'Barcode Berhasil Di Input');
+            }
+        }else{
+            return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('errol', 'PDK dengan Barcode tersebut Sudah Ada!');;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 }
