@@ -1186,3 +1186,63 @@ INFO - 2024-06-14 06:56:45 --> Session: Class initialized using 'CodeIgniter\Ses
 =======
 >>>>>>> 098f757645064b07c60fb47374581f3d173f479f
 >>>>>>> 92e8a08a6a5f9b8ae681e64e2ed0658c74afc9b2
+INFO - 2024-06-14 07:58:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-06-14 07:58:34 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'scan_barcode', 3306, '', 0)
+#1 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT `master_...', Array, false)
+#4 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\xampp\htdocs\ScanBarcode\app\Models\MasterInputModel.php(52): CodeIgniter\BaseModel->findAll()
+#7 D:\xampp\htdocs\ScanBarcode\app\Controllers\AksesorisController.php(171): App\Models\MasterInputModel->getDetailPDK('1')
+#8 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPDK('1')
+#9 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+#10 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 D:\xampp\htdocs\ScanBarcode\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs...')
+#15 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT `master_...', Array, false)
+#3 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#5 D:\xampp\htdocs\ScanBarcode\app\Models\MasterInputModel.php(52): CodeIgniter\BaseModel->findAll()
+#6 D:\xampp\htdocs\ScanBarcode\app\Controllers\AksesorisController.php(171): App\Models\MasterInputModel->getDetailPDK('1')
+#7 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPDK('1')
+#8 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+#9 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\xampp\htdocs\ScanBarcode\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs...')
+#14 {main}
+CRITICAL - 2024-06-14 07:58:34 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: aksesoris/dataPDK/1]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT `master_pdk`.`id_pdk`, `master_pdk`.`pdk`, `master_input`.*
+FROM `master_input`
+JOIN `master_pdk` ON `master_pdk`.`id_pdk` = `master_input`.`id_pdk`
+WHERE `master_pdk`.`id_pdk` = :master_pdk.id_pdk:', [...], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Models\MasterInputModel.php(52): CodeIgniter\BaseModel->findAll()
+ 6 APPPATH\Controllers\AksesorisController.php(171): App\Models\MasterInputModel->getDetailPDK('1')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPDK('1')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+INFO - 2024-06-14 07:59:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 07:59:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 08:00:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

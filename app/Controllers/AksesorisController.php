@@ -111,7 +111,6 @@ class AksesorisController extends BaseController
                 'id_po' => $id_po,
                 'pdk' => $pdk,
                 'no_order' => $no_order,
-                'created_at' => "NOW()",
                 'admin' => session()->get('username'),
             ];
             // $insert = $this->poModel->insertPDK($data);
