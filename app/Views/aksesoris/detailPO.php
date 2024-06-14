@@ -79,7 +79,7 @@
                         <th scope="row"><?= $no++; ?></th>
                         <td><?= $row['pdk']; ?></td>
                         <td><?= $row['no_order']; ?></td>
-                        <td><a href="<?= base_url($role . '/detailPDK/' . $row['id_pdk']) ?>" class="btn btn-info">Detail</a></td>
+                        <td><a href="<?= base_url($role . '/dataPDK/' . $row['id_pdk']) ?>" class="btn btn-info">Detail</a></td>
                     </tr>
                     <?php 
                   endforeach; 

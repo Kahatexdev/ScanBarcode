@@ -174,11 +174,171 @@ class AksesorisController extends BaseController
 
         $data = [
             'role' => session()->get('role'),
-            'title' => 'List PDK PO ' . $pdk,
+            'title' => 'Detail PDK ' . $pdk,
             'id_pdk' => $idPdk,
             'pdk' => $pdk,
             'detailpdk' => $detailPdk,
         ];
         return view('Aksesoris/detailPDK', $data);
     }
+
+    // proses input Master Barcode
+    public function inputMasterBarcode()
+    {
+        $id_pdk     = $this->request->getPost("id_pdk");
+        $barcode_real  = $this->request->getPost("barcode_real");
+
+        $validate = [
+            'id_pdk' => $id_pdk,
+            'barcode_real' => $barcode_real,
+        ];
+        $check = $this->inputModel->cekDuplikatBarcode($validate);
+        if (!$check){
+            $data = [
+                'id_pdk' => $id_pdk,
+                'barcode_real' => $barcode_real,
+                'created_at' => "NOW()",
+            ];
+            $insert = $this->poModel->insertPDK($data);
+            if ($insert) {
+                return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('success', 'Barcode Berhasil Di Input');
+            }
+        }else{
+            return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('errol', 'PDK dengan Barcode tersebut Sudah Ada!');;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 }

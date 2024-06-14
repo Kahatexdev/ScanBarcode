@@ -52,5 +52,11 @@ class MasterInputModel extends Model
         ->findAll();
     }
 
+    public function cekDuplikatBarcode($validate) {
+        $query = $this->where('id_pdk', $validate['id_pdk'])
+            ->where('barcode_real ', $validate['barcode_real'])
+            ->first();
+        return $query;
+    }
 
 }
