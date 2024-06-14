@@ -44,7 +44,36 @@ class MasterPDKModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function cekDuplikatPDK($validate) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function cekDuplikatPDK($validate)
+    {
         $query = $this->where('id_po', $validate['id_po'])
             ->where('pdk ', $validate['pdk'])
             ->where('no_order ', $validate['no_order'])
@@ -53,7 +82,8 @@ class MasterPDKModel extends Model
         return $query;
     }
 
-    public function insertPDK($data) {
+    public function insertPDK($data)
+    {
         return $this->insert($data);
     }
 }

@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class MasterPOModel extends Model
 {
     protected $table            = 'master_po';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_po';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
@@ -47,12 +47,13 @@ class MasterPOModel extends Model
     public function getPo()
     {
         return $this->select('id_po,po,buyer')
-                    ->orderBy('po')
-                    ->groupBy('id_po')
-                    ->findAll();
+            ->orderBy('po')
+            ->groupBy('id_po')
+            ->findAll();
     }
 
-    public function cekDuplikatPO($validate) {
+    public function cekDuplikatPO($validate)
+    {
         $query = $this->where('po', $validate['po'])
             ->where('buyer ', $validate['buyer'])
             ->first();
@@ -62,24 +63,24 @@ class MasterPOModel extends Model
     public function getDetailPO($id_po)
     {
         return $this->select('master_po.*, master_pdk.pdk, master_pdk.no_order')
-        ->where('master_po.id_po', $id_po)
-        ->join('master_pdk', 'master_pdk.id_po = master_po.id_po')
-        ->findAll();
+            ->where('master_po.id_po', $id_po)
+            ->join('master_pdk', 'master_pdk.id_po = master_po.id_po')
+            ->findAll();
     }
 
     public function getNomorPO($id_po)
     {
         return $this->select('po')
-        ->where('id_po', $id_po)
-        ->get()
-        ->getRowArray()['po'];
+            ->where('id_po', $id_po)
+            ->get()
+            ->getRowArray()['po'];
     }
 
     public function getIdPO($id_po)
     {
         return $this->select('id_po')
-        ->where('id_po', $id_po)
-        ->get()
-        ->getRowArray()['id_po'];
+            ->where('id_po', $id_po)
+            ->get()
+            ->getRowArray()['id_po'];
     }
 }

@@ -48,7 +48,9 @@
                                         <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
                                         <p class="text-center small">Enter your username & password to login</p>
                                     </div>
-
+                                    <?php if (session()->has('error')) : ?>
+                                        <div style="color: red;"><?php echo session('error'); ?></div>
+                                    <?php endif; ?>
                                     <form class="row g-3 needs-validation" novalidate action="<?= base_url('checklogin') ?>" method="POST">
                                         <div class="col-12">
                                             <label for="yourUsername" class="form-label">Username</label>

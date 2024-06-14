@@ -7,14 +7,18 @@ use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\MasterPOModel;
 use App\Models\MasterPDKModel;
 
+
 class AksesorisController extends BaseController
 {
     protected $filters;
     protected $poModel;
     protected $pdkModel;
-    public function __construct() {
+
+    public function __construct()
+    {
         $this->poModel = new MasterPOModel();
         $this->pdkModel = new MasterPDKModel();
+
         if ($this->filters   = ['role' => ['aksesoris', session()->get('role') . '', 'acc', 'acc']] != session()->get('role')) {
             return redirect()->to(base_url('/login'));
         }
@@ -43,20 +47,33 @@ class AksesorisController extends BaseController
             'buyer' => $buyer,
         ];
         $check = $this->poModel->cekDuplikatPO($validate);
-        if (!$check){
+        if (!$check) {
             $data = [
                 'po' => $po,
                 'buyer' => $buyer,
                 'created_at' => "NOW()",
             ];
             $insert = $this->poModel->insert($data);
-            if ($insert){
-                return view(session()->get('role') . '/');
+            if ($insert) {
+                return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('success', 'Data Berhasil Di Input');
             }
-        }else{
-            echo "PO Sudah Ada di Database";
+        } else {
+            return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('errol', 'Data PO Sudah Ada!');;
         }
     }
+
+    // proses hapus PO
+    public function hapusPO()
+    {
+        $id_po = $this->request->getPost("id");
+        $delete = $this->poModel->delete($id_po);
+        if ($delete) {
+            return redirect()->to(base_url(session()->get('role') . '/'))->withInput()->with('success', 'Data Berhasil Di Hapus');
+        } else {
+            return redirect()->to(base_url(session()->get('role') . '/'))->withInput()->with('error', 'Gagal Hapus Data');
+        }
+    }
+
 
     // detail PO
     public function detailPO($id_po)
@@ -88,7 +105,7 @@ class AksesorisController extends BaseController
             'no_order' => $no_order,
         ];
         $check = $this->pdkModel->cekDuplikatPDK($validate);
-        if (!$check){
+        if (!$check) {
             $data = [
                 'id_po' => $id_po,
                 'pdk' => $pdk,
@@ -98,9 +115,8 @@ class AksesorisController extends BaseController
             ];
             // $insert = $this->poModel->insertPDK($data);
             var_dump($check);
-        }else{
+        } else {
             echo "PDK Sudah Ada di Database";
         }
     }
-
 }
