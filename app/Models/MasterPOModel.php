@@ -60,14 +60,6 @@ class MasterPOModel extends Model
         return $query;
     }
 
-    public function getDetailPO($id_po)
-    {
-        return $this->select('master_po.*, master_pdk.pdk, master_pdk.no_order')
-            ->where('master_po.id_po', $id_po)
-            ->join('master_pdk', 'master_pdk.id_po = master_po.id_po')
-            ->findAll();
-    }
-
     public function getNomorPO($id_po)
     {
         return $this->select('po')

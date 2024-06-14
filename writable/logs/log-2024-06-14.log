@@ -197,6 +197,7 @@ INFO - 2024-06-14 02:30:30 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2024-06-14 02:30:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-06-14 02:30:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-06-14 02:32:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+<<<<<<< HEAD
 ERROR - 2024-06-14 03:12:18 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:186
 Stack trace:
 #0 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'scan_barcode', 3307, '', 0)
@@ -557,12 +558,67 @@ in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
  2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('aksesoris/', [], true)
  3 APPPATH\Controllers\AksesorisController.php(54): view('aksesoris/')
  4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->inputPO()
+=======
+INFO - 2024-06-14 03:21:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 03:21:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 03:21:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 03:38:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 03:39:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-14 03:39:05 --> BadMethodCallException: Call to undefined method App\Models\MasterPDKModel::getDetailPDK
+[Method: GET, Route: aksesoris/dataPDK/2]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\AksesorisController.php(153): CodeIgniter\Model->__call('getDetailPDK', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPDK('2')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+INFO - 2024-06-14 03:39:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-14 03:39:12 --> BadMethodCallException: Call to undefined method App\Models\MasterPDKModel::getDetailPDK
+[Method: GET, Route: aksesoris/dataPDK/1]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\AksesorisController.php(153): CodeIgniter\Model->__call('getDetailPDK', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPDK('1')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+INFO - 2024-06-14 04:02:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-14 04:02:12 --> BadMethodCallException: Call to undefined method App\Models\MasterPOModel::getPDK
+[Method: GET, Route: aksesoris/dataPDK/1]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\AksesorisController.php(155): CodeIgniter\Model->__call('getPDK', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPDK('1')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+INFO - 2024-06-14 04:02:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 04:04:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 04:04:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 04:04:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 04:05:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-14 04:05:58 --> ParseError: Unmatched ')'
+[Method: GET, Route: aksesoris/dataPO/2]
+in APPPATH\Views\aksesoris\detailPO.php on line 82.
+ 1 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('Aksesoris/detailPO', [], true)
+ 3 APPPATH\Controllers\AksesorisController.php(75): view('Aksesoris/detailPO', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+>>>>>>> 098f757645064b07c60fb47374581f3d173f479f
  5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
  6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
  8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 10 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+<<<<<<< HEAD
 INFO - 2024-06-14 03:59:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-06-14 04:01:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-06-14 04:02:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
@@ -574,12 +630,23 @@ in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
  2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('aksesoris', [], true)
  3 APPPATH\Controllers\AksesorisController.php(55): view('aksesoris')
  4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->inputPO()
+=======
+INFO - 2024-06-14 04:06:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-14 04:06:02 --> ParseError: Unmatched ')'
+[Method: GET, Route: aksesoris/dataPO/2]
+in APPPATH\Views\aksesoris\detailPO.php on line 82.
+ 1 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('Aksesoris/detailPO', [], true)
+ 3 APPPATH\Controllers\AksesorisController.php(75): view('Aksesoris/detailPO', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+>>>>>>> 098f757645064b07c60fb47374581f3d173f479f
  5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
  6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
  8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 10 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+<<<<<<< HEAD
 INFO - 2024-06-14 04:03:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-06-14 04:03:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 CRITICAL - 2024-06-14 04:03:40 --> ErrorException: Undefined variable $role
@@ -591,13 +658,497 @@ in APPPATH\Views\Aksesoris\halamanUtama.php on line 1.
  4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('aksesoris/halamanUtama', [], true)
  5 APPPATH\Controllers\AksesorisController.php(55): view('aksesoris/halamanUtama')
  6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->inputPO()
+=======
+INFO - 2024-06-14 04:08:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 04:08:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 04:08:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 04:08:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 04:12:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 04:16:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 04:16:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 04:21:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 04:21:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 04:23:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-14 04:23:07 --> ErrorException: Undefined array key "id_pdk"
+[Method: GET, Route: aksesoris/dataPO/2]
+in APPPATH\Views\aksesoris\detailPO.php on line 82.
+ 1 APPPATH\Views\aksesoris\detailPO.php(82): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_pdk"', 'D:\\xampp\\htdocs\\ScanBarcode\\app\\Views\\aksesoris\\detailPO.php', 82)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\xampp\\htdocs\\ScanBarcode\\app\\Views\\aksesoris\\detailPO.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('Aksesoris/detailPO', [], true)
+ 5 APPPATH\Controllers\AksesorisController.php(75): view('Aksesoris/detailPO', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+>>>>>>> 098f757645064b07c60fb47374581f3d173f479f
  7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
  8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 12 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+<<<<<<< HEAD
 INFO - 2024-06-14 04:20:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-06-14 04:21:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-06-14 04:21:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-06-14 05:31:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+=======
+INFO - 2024-06-14 04:24:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-14 04:24:31 --> ErrorException: Undefined array key "id_pdk"
+[Method: GET, Route: aksesoris/dataPO/2]
+in APPPATH\Views\aksesoris\detailPO.php on line 80.
+ 1 APPPATH\Views\aksesoris\detailPO.php(80): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_pdk"', 'D:\\xampp\\htdocs\\ScanBarcode\\app\\Views\\aksesoris\\detailPO.php', 80)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\xampp\\htdocs\\ScanBarcode\\app\\Views\\aksesoris\\detailPO.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('Aksesoris/detailPO', [], true)
+ 5 APPPATH\Controllers\AksesorisController.php(75): view('Aksesoris/detailPO', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+INFO - 2024-06-14 04:25:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-06-14 04:25:13 --> mysqli_sql_exception: Column 'id_po' in field list is ambiguous in D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:310
+Stack trace:
+#0 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(310): mysqli->query('SELECT `id_po`\n...', 0)
+#1 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id_po`\n...')
+#2 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id_po`\n...')
+#3 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT `id_po`\n...', Array, false)
+#4 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Model.php(930): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\xampp\htdocs\ScanBarcode\app\Models\MasterPDKModel.php(70): CodeIgniter\Model->__call('get', Array)
+#6 D:\xampp\htdocs\ScanBarcode\app\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+#7 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+#8 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+#9 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\xampp\htdocs\ScanBarcode\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs...')
+#14 {main}
+CRITICAL - 2024-06-14 04:25:13 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'id_po' in field list is ambiguous
+[Method: GET, Route: aksesoris/dataPO/2]
+in SYSTEMPATH\Database\BaseConnection.php on line 686.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT `id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = :id_po:', [...], false)
+ 2 SYSTEMPATH\Model.php(930): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Models\MasterPDKModel.php(70): CodeIgniter\Model->__call('get', [])
+ 4 APPPATH\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+CRITICAL - 2024-06-14 04:25:13 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'id_po' in field list is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 315.
+ 1 SYSTEMPATH\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = \'2\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT `id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = :id_po:', [...], false)
+ 4 SYSTEMPATH\Model.php(930): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Models\MasterPDKModel.php(70): CodeIgniter\Model->__call('get', [])
+ 6 APPPATH\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+CRITICAL - 2024-06-14 04:25:13 --> [Caused by] mysqli_sql_exception: Column 'id_po' in field list is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(310): mysqli->query('SELECT `id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = \'2\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = \'2\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT `id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = :id_po:', [...], false)
+ 5 SYSTEMPATH\Model.php(930): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Models\MasterPDKModel.php(70): CodeIgniter\Model->__call('get', [])
+ 7 APPPATH\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+INFO - 2024-06-14 04:25:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-06-14 04:25:14 --> mysqli_sql_exception: Column 'id_po' in field list is ambiguous in D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:310
+Stack trace:
+#0 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(310): mysqli->query('SELECT `id_po`\n...', 0)
+#1 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id_po`\n...')
+#2 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id_po`\n...')
+#3 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT `id_po`\n...', Array, false)
+#4 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Model.php(930): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\xampp\htdocs\ScanBarcode\app\Models\MasterPDKModel.php(70): CodeIgniter\Model->__call('get', Array)
+#6 D:\xampp\htdocs\ScanBarcode\app\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+#7 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+#8 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+#9 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\xampp\htdocs\ScanBarcode\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs...')
+#14 {main}
+CRITICAL - 2024-06-14 04:25:14 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'id_po' in field list is ambiguous
+[Method: GET, Route: aksesoris/dataPO/2]
+in SYSTEMPATH\Database\BaseConnection.php on line 686.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT `id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = :id_po:', [...], false)
+ 2 SYSTEMPATH\Model.php(930): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Models\MasterPDKModel.php(70): CodeIgniter\Model->__call('get', [])
+ 4 APPPATH\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+CRITICAL - 2024-06-14 04:25:14 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'id_po' in field list is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 315.
+ 1 SYSTEMPATH\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = \'2\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT `id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = :id_po:', [...], false)
+ 4 SYSTEMPATH\Model.php(930): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Models\MasterPDKModel.php(70): CodeIgniter\Model->__call('get', [])
+ 6 APPPATH\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+CRITICAL - 2024-06-14 04:25:14 --> [Caused by] mysqli_sql_exception: Column 'id_po' in field list is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(310): mysqli->query('SELECT `id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = \'2\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = \'2\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT `id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = :id_po:', [...], false)
+ 5 SYSTEMPATH\Model.php(930): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Models\MasterPDKModel.php(70): CodeIgniter\Model->__call('get', [])
+ 7 APPPATH\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+INFO - 2024-06-14 04:27:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-06-14 04:27:16 --> mysqli_sql_exception: Column 'id_po' in where clause is ambiguous in D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:310
+Stack trace:
+#0 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(310): mysqli->query('SELECT `master_...', 0)
+#1 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `master_...')
+#2 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `master_...')
+#3 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT `master_...', Array, false)
+#4 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Model.php(930): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\xampp\htdocs\ScanBarcode\app\Models\MasterPDKModel.php(70): CodeIgniter\Model->__call('get', Array)
+#6 D:\xampp\htdocs\ScanBarcode\app\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+#7 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+#8 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+#9 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\xampp\htdocs\ScanBarcode\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs...')
+#14 {main}
+CRITICAL - 2024-06-14 04:27:16 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'id_po' in where clause is ambiguous
+[Method: GET, Route: aksesoris/dataPO/2]
+in SYSTEMPATH\Database\BaseConnection.php on line 686.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT `master_po`.`id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = :id_po:', [...], false)
+ 2 SYSTEMPATH\Model.php(930): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Models\MasterPDKModel.php(70): CodeIgniter\Model->__call('get', [])
+ 4 APPPATH\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+CRITICAL - 2024-06-14 04:27:16 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'id_po' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 315.
+ 1 SYSTEMPATH\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `master_po`.`id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = \'2\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `master_po`.`id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT `master_po`.`id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = :id_po:', [...], false)
+ 4 SYSTEMPATH\Model.php(930): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Models\MasterPDKModel.php(70): CodeIgniter\Model->__call('get', [])
+ 6 APPPATH\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+CRITICAL - 2024-06-14 04:27:16 --> [Caused by] mysqli_sql_exception: Column 'id_po' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(310): mysqli->query('SELECT `master_po`.`id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = \'2\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `master_po`.`id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `master_po`.`id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = \'2\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT `master_po`.`id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = :id_po:', [...], false)
+ 5 SYSTEMPATH\Model.php(930): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Models\MasterPDKModel.php(70): CodeIgniter\Model->__call('get', [])
+ 7 APPPATH\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+INFO - 2024-06-14 04:27:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-06-14 04:27:17 --> mysqli_sql_exception: Column 'id_po' in where clause is ambiguous in D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:310
+Stack trace:
+#0 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(310): mysqli->query('SELECT `master_...', 0)
+#1 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `master_...')
+#2 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `master_...')
+#3 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT `master_...', Array, false)
+#4 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Model.php(930): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\xampp\htdocs\ScanBarcode\app\Models\MasterPDKModel.php(70): CodeIgniter\Model->__call('get', Array)
+#6 D:\xampp\htdocs\ScanBarcode\app\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+#7 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+#8 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+#9 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\xampp\htdocs\ScanBarcode\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 D:\xampp\htdocs\ScanBarcode\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs...')
+#14 {main}
+CRITICAL - 2024-06-14 04:27:17 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'id_po' in where clause is ambiguous
+[Method: GET, Route: aksesoris/dataPO/2]
+in SYSTEMPATH\Database\BaseConnection.php on line 686.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT `master_po`.`id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = :id_po:', [...], false)
+ 2 SYSTEMPATH\Model.php(930): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Models\MasterPDKModel.php(70): CodeIgniter\Model->__call('get', [])
+ 4 APPPATH\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+CRITICAL - 2024-06-14 04:27:17 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'id_po' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 315.
+ 1 SYSTEMPATH\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `master_po`.`id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = \'2\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `master_po`.`id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT `master_po`.`id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = :id_po:', [...], false)
+ 4 SYSTEMPATH\Model.php(930): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Models\MasterPDKModel.php(70): CodeIgniter\Model->__call('get', [])
+ 6 APPPATH\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+CRITICAL - 2024-06-14 04:27:17 --> [Caused by] mysqli_sql_exception: Column 'id_po' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(310): mysqli->query('SELECT `master_po`.`id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = \'2\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `master_po`.`id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `master_po`.`id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = \'2\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT `master_po`.`id_po`
+FROM `master_pdk`
+JOIN `master_po` ON `master_pdk`.`id_po` = `master_po`.`id_po`
+WHERE `id_po` = :id_po:', [...], false)
+ 5 SYSTEMPATH\Model.php(930): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Models\MasterPDKModel.php(70): CodeIgniter\Model->__call('get', [])
+ 7 APPPATH\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+INFO - 2024-06-14 04:27:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-14 04:27:55 --> ErrorException: Undefined array key "master_po.id_po"
+[Method: GET, Route: aksesoris/dataPO/2]
+in APPPATH\Models\MasterPDKModel.php on line 71.
+ 1 APPPATH\Models\MasterPDKModel.php(71): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "master_po.id_po"', 'D:\\xampp\\htdocs\\ScanBarcode\\app\\Models\\MasterPDKModel.php', 71)
+ 2 APPPATH\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+INFO - 2024-06-14 04:27:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-14 04:27:56 --> ErrorException: Undefined array key "master_po.id_po"
+[Method: GET, Route: aksesoris/dataPO/2]
+in APPPATH\Models\MasterPDKModel.php on line 71.
+ 1 APPPATH\Models\MasterPDKModel.php(71): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "master_po.id_po"', 'D:\\xampp\\htdocs\\ScanBarcode\\app\\Models\\MasterPDKModel.php', 71)
+ 2 APPPATH\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+INFO - 2024-06-14 04:29:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-14 04:29:09 --> ErrorException: Undefined array key "master_po.id_po"
+[Method: GET, Route: aksesoris/dataPO/2]
+in APPPATH\Models\MasterPDKModel.php on line 71.
+ 1 APPPATH\Models\MasterPDKModel.php(71): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "master_po.id_po"', 'D:\\xampp\\htdocs\\ScanBarcode\\app\\Models\\MasterPDKModel.php', 71)
+ 2 APPPATH\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+INFO - 2024-06-14 04:29:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-14 04:29:09 --> ErrorException: Undefined array key "master_po.id_po"
+[Method: GET, Route: aksesoris/dataPO/2]
+in APPPATH\Models\MasterPDKModel.php on line 71.
+ 1 APPPATH\Models\MasterPDKModel.php(71): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "master_po.id_po"', 'D:\\xampp\\htdocs\\ScanBarcode\\app\\Models\\MasterPDKModel.php', 71)
+ 2 APPPATH\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+INFO - 2024-06-14 04:29:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-14 04:29:10 --> ErrorException: Undefined array key "master_po.id_po"
+[Method: GET, Route: aksesoris/dataPO/2]
+in APPPATH\Models\MasterPDKModel.php on line 71.
+ 1 APPPATH\Models\MasterPDKModel.php(71): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "master_po.id_po"', 'D:\\xampp\\htdocs\\ScanBarcode\\app\\Models\\MasterPDKModel.php', 71)
+ 2 APPPATH\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+INFO - 2024-06-14 04:29:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-14 04:29:10 --> ErrorException: Undefined array key "master_po.id_po"
+[Method: GET, Route: aksesoris/dataPO/2]
+in APPPATH\Models\MasterPDKModel.php on line 71.
+ 1 APPPATH\Models\MasterPDKModel.php(71): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "master_po.id_po"', 'D:\\xampp\\htdocs\\ScanBarcode\\app\\Models\\MasterPDKModel.php', 71)
+ 2 APPPATH\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+INFO - 2024-06-14 04:29:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-14 04:29:10 --> ErrorException: Undefined array key "master_po.id_po"
+[Method: GET, Route: aksesoris/dataPO/2]
+in APPPATH\Models\MasterPDKModel.php on line 71.
+ 1 APPPATH\Models\MasterPDKModel.php(71): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "master_po.id_po"', 'D:\\xampp\\htdocs\\ScanBarcode\\app\\Models\\MasterPDKModel.php', 71)
+ 2 APPPATH\Controllers\AksesorisController.php(65): App\Models\MasterPDKModel->getIdPO('2')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AksesorisController->detailPO('2')
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AksesorisController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('D:\\xampp\\htdocs\\ScanBarcode\\public\\index.php')
+INFO - 2024-06-14 04:29:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 05:54:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 05:54:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 05:56:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-14 05:56:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+>>>>>>> 098f757645064b07c60fb47374581f3d173f479f

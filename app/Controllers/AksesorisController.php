@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\MasterPOModel;
 use App\Models\MasterPDKModel;
+use App\Models\MasterInputModel;
 
 
 class AksesorisController extends BaseController
@@ -13,12 +14,12 @@ class AksesorisController extends BaseController
     protected $filters;
     protected $poModel;
     protected $pdkModel;
-
+    protected $inputModel;
     public function __construct()
     {
         $this->poModel = new MasterPOModel();
         $this->pdkModel = new MasterPDKModel();
-
+        $this->inputModel = new MasterInputModel();
         if ($this->filters   = ['role' => ['aksesoris', session()->get('role') . '', 'acc', 'acc']] != session()->get('role')) {
             return redirect()->to(base_url('/login'));
         }
@@ -62,23 +63,23 @@ class AksesorisController extends BaseController
         }
     }
 
-    // proses hapus PO
-    public function hapusPO()
-    {
-        $id_po = $this->request->getPost("id");
-        $delete = $this->poModel->delete($id_po);
-        if ($delete) {
-            return redirect()->to(base_url(session()->get('role') . '/'))->withInput()->with('success', 'Data Berhasil Di Hapus');
-        } else {
-            return redirect()->to(base_url(session()->get('role') . '/'))->withInput()->with('error', 'Gagal Hapus Data');
-        }
-    }
+
+
+
+
+
+
+
+
+
+
+
 
 
     // detail PO
     public function detailPO($id_po)
     {
-        $detailPo = $this->poModel->getDetailPO($id_po);
+        $detailPo = $this->pdkModel->getDetailPO($id_po);
         $idPo = $this->poModel->getIdPO($id_po);
         $noPo = $this->poModel->getNomorPO($id_po);
 
@@ -118,5 +119,66 @@ class AksesorisController extends BaseController
         } else {
             echo "PDK Sudah Ada di Database";
         }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // detail PDK
+    public function detailPDK($id_pdk)
+    {
+        $detailPdk = $this->inputModel->getDetailPDK($id_pdk);
+        $idPdk = $this->pdkModel->getIdPDK($id_pdk);
+        $pdk = $this->pdkModel->getPDK($id_pdk);
+
+        $data = [
+            'role' => session()->get('role'),
+            'title' => 'List PDK PO ' . $pdk,
+            'id_pdk' => $idPdk,
+            'pdk' => $pdk,
+            'detailpdk' => $detailPdk,
+        ];
+        return view('Aksesoris/detailPDK', $data);
     }
 }

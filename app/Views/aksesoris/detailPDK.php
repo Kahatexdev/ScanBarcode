@@ -33,22 +33,18 @@
                   <div class="modal-content">
                     <form action="<?= base_url($role . '/prosesInputPDK') ?>" method="POST">
                       <div class="modal-header">
-                        <h5 class="modal-title"><strong>Input PDK</strong></h5>
+                        <h5 class="modal-title"><strong>Input Master Barcode</strong></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
                         <div class="form-group">
-                          <label>PO</label>
-                          <input type="text" class="form-control" name="id_po" id="id_po" value="<?= $id_po ?>" required readonly>
-                          <input type="text" class="form-control" name="po" id="po" value="<?= $no_po ?>" required readonly>
-                        </div>
-                        <div class="form-group">
                           <label>PDK</label>
-                          <input type="text" class="form-control" name="pdk" id="pdk" required>
+                          <input type="text" class="form-control" name="id_po" id="id_po" value="<?= $id_pdk ?>" required readonly>
+                          <input type="text" class="form-control" name="po" id="po" value="<?= $pdk ?>" required readonly>
                         </div>
                         <div class="form-group">
-                          <label>No Order</label>
-                          <input type="text" class="form-control" name="no_order" id="no_order" required>
+                          <label>Barcode Real</label>
+                          <input type="text" class="form-control" name="pdk" id="pdk" required>
                         </div>
                       </div>
                       <div class="modal-footer">
@@ -66,20 +62,20 @@
               <thead style="text-align: center;">
                 <tr>
                   <th scope="col">No</th>
-                  <th scope="col">PDK</th>
-                  <th scope="col">No Order</th>
+                  <th scope="col">Barcode</th>
+                  <th scope="col">Qty Scan</th>
                   <th scope="col">Aksi</th>
                 </tr>
               </thead>
               <tbody style="text-align: center;">
                 <?php 
                   $no = 1;
-                  foreach ($detailpo as $row) : ?>
+                  foreach ($detailpdk as $row) : ?>
                     <tr>
                         <th scope="row"><?= $no++; ?></th>
-                        <td><?= $row['pdk']; ?></td>
-                        <td><?= $row['no_order']; ?></td>
-                        <td><a href="<?= base_url($role . '/detailPDK/' . $row['id_pdk']) ?>" class="btn btn-info">Detail</a></td>
+                        <td><?= $row['barcode_real']; ?></td>
+                        <td></td>
+                        <td><a href="<?= base_url($role . '/') ?>">Scan</a></td>
                     </tr>
                     <?php 
                   endforeach; 
