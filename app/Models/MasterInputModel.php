@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class MasterInputModel extends Model
 {
     protected $table            = 'master_input';
-    protected $primaryKey       = 'id_input';
+    protected $primaryKey       = 'id_data';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
@@ -24,8 +24,8 @@ class MasterInputModel extends Model
     protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
+    protected $updatedField  = false;
+    protected $deletedField  = false;
 
     // Validation
     protected $validationRules      = [];

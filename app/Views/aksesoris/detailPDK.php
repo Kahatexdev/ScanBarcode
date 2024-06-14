@@ -39,12 +39,12 @@
                       <div class="modal-body">
                         <div class="form-group">
                           <label>PDK</label>
-                          <input type="text" class="form-control" name="id_po" id="id_po" value="<?= $id_pdk ?>" required readonly>
-                          <input type="text" class="form-control" name="po" id="po" value="<?= $pdk ?>" required readonly>
+                          <input type="text" class="form-control" name="id_pdk" id="id_pdk" value="<?= $id_pdk ?>" required readonly>
+                          <input type="text" class="form-control" name="pdk" id="pdk" value="<?= $pdk ?>" required readonly>
                         </div>
                         <div class="form-group">
                           <label>Barcode Real</label>
-                          <input type="text" class="form-control" name="pdk" id="pdk" required>
+                          <input type="text" class="form-control" name="barcode_real" id="barcode_real" required>
                         </div>
                       </div>
                       <div class="modal-footer">
@@ -75,7 +75,7 @@
                         <th scope="row"><?= $no++; ?></th>
                         <td><?= $row['barcode_real']; ?></td>
                         <td></td>
-                        <td><a href="<?= base_url($role . '/') ?>">Scan</a></td>
+                        <td><a href="<?= base_url($role . '/scanBarcode' . $row['id_data']) ?>" class="btn btn-info">Scan</a></td>
                     </tr>
                     <?php 
                   endforeach; 

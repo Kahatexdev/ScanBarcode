@@ -52,14 +52,16 @@ class AksesorisController extends BaseController
             $data = [
                 'po' => $po,
                 'buyer' => $buyer,
-                'created_at' => "NOW()",
+                'created_at' => date('Y-m-d H:i:s'),
             ];
             $insert = $this->poModel->insert($data);
             if ($insert) {
                 return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('success', 'Data Berhasil Di Input');
+            }else{
+                return redirect()->to(base_url(session()->get('role')))->withInput()->with('error', 'Terjadi kesalahan saat menginput data.');
             }
         } else {
-            return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('errol', 'Data PO Sudah Ada!');;
+            return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('error', 'Data PO Sudah Ada!');;
         }
     }
 
@@ -80,13 +82,12 @@ class AksesorisController extends BaseController
     public function detailPO($id_po)
     {
         $detailPo = $this->pdkModel->getDetailPO($id_po);
-        $idPo = $this->poModel->getIdPO($id_po);
         $noPo = $this->poModel->getNomorPO($id_po);
 
         $data = [
             'role' => session()->get('role'),
             'title' => 'List PDK PO ' . $noPo,
-            'id_po' => $idPo,
+            'id_po' => $id_po,
             'no_po' => $noPo,
             'detailpo' => $detailPo,
         ];
@@ -111,12 +112,17 @@ class AksesorisController extends BaseController
                 'id_po' => $id_po,
                 'pdk' => $pdk,
                 'no_order' => $no_order,
+                'created_at' => date('Y-m-d H:i:s'),
                 'admin' => session()->get('username'),
             ];
-            // $insert = $this->poModel->insertPDK($data);
-            var_dump($check);
+            $insert = $this->pdkModel->insert($data);
+            if ($insert) {
+                return redirect()->to(base_url(session()->get('role') . '/dataPO/'. $id_po))->withInput()->with('success', 'Data PDK Berhasil Di Input');
+            }   
+            // var_dump($data);
         } else {
-            echo "PDK Sudah Ada di Database";
+            return redirect()->to(base_url(session()->get('role') . '/dataPO/'. $id_po))->withInput()->with('error', 'Data PDK Sudah Ada!');
+            // echo "bbbb";
         }
     }
 
@@ -168,13 +174,12 @@ class AksesorisController extends BaseController
     public function detailPDK($id_pdk)
     {
         $detailPdk = $this->inputModel->getDetailPDK($id_pdk);
-        $idPdk = $this->pdkModel->getIdPDK($id_pdk);
         $pdk = $this->pdkModel->getPDK($id_pdk);
 
         $data = [
             'role' => session()->get('role'),
             'title' => 'Detail PDK ' . $pdk,
-            'id_pdk' => $idPdk,
+            'id_pdk' => $id_pdk,
             'pdk' => $pdk,
             'detailpdk' => $detailPdk,
         ];
@@ -196,14 +201,16 @@ class AksesorisController extends BaseController
             $data = [
                 'id_pdk' => $id_pdk,
                 'barcode_real' => $barcode_real,
-                'created_at' => "NOW()",
+                'created_at' => date('Y-m-d H:i:s'),
             ];
-            $insert = $this->poModel->insertPDK($data);
+            $insert = $this->inputModel->insert($data);
             if ($insert) {
-                return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('success', 'Barcode Berhasil Di Input');
+                return redirect()->to(base_url(session()->get('role') . '/dataPDK/'. $id_pdk))->withInput()->with('success', 'Barcode Berhasil Di Input');
             }
+            // var_dump($data);
         }else{
-            return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('errol', 'PDK dengan Barcode tersebut Sudah Ada!');;
+            return redirect()->to(base_url(session()->get('role') . '/dataPDK/'. $id_pdk))->withInput()->with('error', 'PDK dengan Barcode tersebut Sudah Ada!');;
+        // echo "bbb";
         }
     }
 

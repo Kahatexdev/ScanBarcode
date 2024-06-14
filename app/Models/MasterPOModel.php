@@ -12,7 +12,7 @@ class MasterPOModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_po', 'po', 'buyer'];
+    protected $allowedFields    = ['id_po', 'po', 'buyer', 'created_at'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -22,10 +22,10 @@ class MasterPOModel extends Model
 
     // Dates
     protected $useTimestamps = false;
-    // protected $dateFormat    = 'datetime';
-    // protected $createdField  = 'created_at';
-    // protected $updatedField  = 'updated_at';
-    // protected $deletedField  = 'deleted_at';
+    protected $dateFormat    = 'datetime';
+    protected $createdField  = 'created_at';
+    protected $updatedField  = false;
+    protected $deletedField  = false;
 
     // Validation
     protected $validationRules      = [];
@@ -66,13 +66,5 @@ class MasterPOModel extends Model
             ->where('id_po', $id_po)
             ->get()
             ->getRowArray()['po'];
-    }
-
-    public function getIdPO($id_po)
-    {
-        return $this->select('id_po')
-            ->where('id_po', $id_po)
-            ->get()
-            ->getRowArray()['id_po'];
     }
 }

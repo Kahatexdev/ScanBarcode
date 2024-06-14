@@ -21,7 +21,7 @@ class MasterPDKModel extends Model
     protected array $castHandlers = [];
 
     // Dates
-    protected $useTimestamps = TRUE;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
@@ -107,13 +107,5 @@ class MasterPDKModel extends Model
             ->where('id_pdk', $id_pdk)
             ->get()
             ->getRowArray()['pdk'];
-    }
-
-    public function getIdPDK($id_pdk)
-    {
-        return $this->select('id_pdk')
-            ->where('id_pdk', $id_pdk)
-            ->get()
-            ->getRowArray()['id_pdk'];
     }
 }
