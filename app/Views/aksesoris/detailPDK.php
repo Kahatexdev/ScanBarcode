@@ -23,15 +23,15 @@
             <h5 class="card-title"></h5>
             <!-- <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
             <div class="row">
-              <div class="col-11">&nbsp;</div>
-              <div class="col-1">
-                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#smallModal"><strong>+ PDK</strong></button>
+              <div class="col-10">&nbsp;</div>
+              <div class="col-2">
+                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#smallModal"><strong>+ Barcode</strong></button>
               </div>
               <!-- isi dari modal +PO -->
               <div class="modal fade" id="smallModal" tabindex="-1">
                 <div class="modal-dialog modal-sm">
                   <div class="modal-content">
-                    <form action="<?= base_url($role . '/prosesInputPDK') ?>" method="POST">
+                    <form action="<?= base_url($role . '/prosesInputBarcode') ?>" method="POST">
                       <div class="modal-header">
                         <h5 class="modal-title"><strong>Input Master Barcode</strong></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

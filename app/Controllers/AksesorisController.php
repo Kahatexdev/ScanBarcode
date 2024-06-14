@@ -173,12 +173,11 @@ class AksesorisController extends BaseController
 
         $data = [
             'role' => session()->get('role'),
-            'title' => 'List PDK PO ' . $pdk,
+            'title' => 'Detail PDK ' . $pdk,
             'id_pdk' => $idPdk,
             'pdk' => $pdk,
             'detailpdk' => $detailPdk,
         ];
         return view('Aksesoris/detailPDK', $data);
     }
-
 }
