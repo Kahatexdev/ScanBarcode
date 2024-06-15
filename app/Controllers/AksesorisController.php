@@ -20,8 +20,8 @@ class AksesorisController extends BaseController
         $this->poModel = new MasterPOModel();
         $this->pdkModel = new MasterPDKModel();
         $this->inputModel = new MasterInputModel();
-        if ($this->filters   = ['role' => ['aksesoris', session()->get('role') . '', 'acc', 'acc']] != session()->get('role')) {
-            return redirect()->to(base_url('/login'));
+        if ($this->filters = ['role' => ['aksesoris', session()->get('role')]] !== session()->get('role')) {
+            return redirect()->to(base_url('/'));
         }
     }
 
@@ -57,7 +57,7 @@ class AksesorisController extends BaseController
             $insert = $this->poModel->insert($data);
             if ($insert) {
                 return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('success', 'Data Berhasil Di Input');
-            }else{
+            } else {
                 return redirect()->to(base_url(session()->get('role')))->withInput()->with('error', 'Terjadi kesalahan saat menginput data.');
             }
         } else {
@@ -117,11 +117,11 @@ class AksesorisController extends BaseController
             ];
             $insert = $this->pdkModel->insert($data);
             if ($insert) {
-                return redirect()->to(base_url(session()->get('role') . '/dataPO/'. $id_po))->withInput()->with('success', 'Data PDK Berhasil Di Input');
-            }   
+                return redirect()->to(base_url(session()->get('role') . '/dataPO/' . $id_po))->withInput()->with('success', 'Data PDK Berhasil Di Input');
+            }
             // var_dump($data);
         } else {
-            return redirect()->to(base_url(session()->get('role') . '/dataPO/'. $id_po))->withInput()->with('error', 'Data PDK Sudah Ada!');
+            return redirect()->to(base_url(session()->get('role') . '/dataPO/' . $id_po))->withInput()->with('error', 'Data PDK Sudah Ada!');
             // echo "bbbb";
         }
     }
@@ -197,7 +197,7 @@ class AksesorisController extends BaseController
             'barcode_real' => $barcode_real,
         ];
         $check = $this->inputModel->cekDuplikatBarcode($validate);
-        if (!$check){
+        if (!$check) {
             $data = [
                 'id_pdk' => $id_pdk,
                 'barcode_real' => $barcode_real,
@@ -205,146 +205,12 @@ class AksesorisController extends BaseController
             ];
             $insert = $this->inputModel->insert($data);
             if ($insert) {
-                return redirect()->to(base_url(session()->get('role') . '/dataPDK/'. $id_pdk))->withInput()->with('success', 'Barcode Berhasil Di Input');
+                return redirect()->to(base_url(session()->get('role') . '/dataPDK/' . $id_pdk))->withInput()->with('success', 'Barcode Berhasil Di Input');
             }
             // var_dump($data);
-        }else{
-            return redirect()->to(base_url(session()->get('role') . '/dataPDK/'. $id_pdk))->withInput()->with('error', 'PDK dengan Barcode tersebut Sudah Ada!');;
-        // echo "bbb";
+        } else {
+            return redirect()->to(base_url(session()->get('role') . '/dataPDK/' . $id_pdk))->withInput()->with('error', 'PDK dengan Barcode tersebut Sudah Ada!');;
+            // echo "bbb";
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
 }

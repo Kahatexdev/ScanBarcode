@@ -25,7 +25,9 @@ class AksesorisFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        //
+        if (!session('role') || session('role') !== 'aksesoris') {
+            return redirect()->to(base_url('/'))->with('error', 'Unauthorized access');
+        }
     }
 
     /**

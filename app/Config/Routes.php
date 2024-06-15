@@ -9,6 +9,7 @@ use CodeIgniter\Router\RouteCollection;
 // auth
 $routes->get('/', 'AuthController::index');
 $routes->post('checklogin', 'AuthController::login');
+$routes->get('logout', 'AuthController::logout');
 
 // routes role aksesoris
 $routes->group('/aksesoris', ['filter' => 'aksesoris'], function ($routes) {
@@ -20,8 +21,6 @@ $routes->group('/aksesoris', ['filter' => 'aksesoris'], function ($routes) {
     $routes->post('prosesInputPDK', 'AksesorisController::inputPDK');
     $routes->get('dataPDK/(:num)', 'AksesorisController::detailPDK/$1');
     $routes->post('prosesInputBarcode', 'AksesorisController::inputMasterBarcode');
-
-
 });
 
 
