@@ -25,7 +25,9 @@ class PackingFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        //
+        if (!session('role') || session('role') !== 'packing') {
+            return redirect()->to(base_url('/'))->with('error', 'Unauthorized access');
+        }
     }
 
     /**
