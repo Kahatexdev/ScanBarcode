@@ -22,65 +22,75 @@
           <div class="card-body">
             <h5 class="card-title"></h5>
             <div class="row">
-                <div class="col-12 my-3 d-flex justify-content-end">
-                    <a href="<?=base_url('aksesoris/dataPDK/'.$master['id_po'].'/'.$master['id_pdk'])?>" class="btn btn-outline-primary">
-                        Scan Barcode Lain
-                    </a>
-                </div>
+              <div class="col-12 my-3 d-flex justify-content-end">
+                <a href="<?= base_url('aksesoris/dataPDK/' . $master['id_po'] . '/' . $master['id_pdk']) ?>" class="btn btn-outline-primary">
+                  Scan Barcode Lain
+                </a>
+              </div>
             </div>
             <!-- <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
             <div class="row d-flex">
               <div class="col-6">
                 <div class="row">
-                    <div class="col-3  d-flex justify-content-end">
-                    <h5> No Barcode  </h5>   
-                    </div>
-                    <div class="col-6">   <h5>   : <?=$master['barcode_real']?>  </h5></div>
-                 </div>
-                 <div class="row">
-                    <div class="col-3 d-flex justify-content-end">
-                    <h6> PO  </h6>   
-                    </div>
-                    <div class="col-6">   <h6>   : <?=$master['po']?>  </h6></div>
-                 </div>
-                 <div class="row">
-                    <div class="col-3 d-flex justify-content-end">
-                    <h6> Buyer  </h6>   
-                    </div>
-                    <div class="col-6">   <h6>   : <?=$master['buyer']?>  </h6></div>
-                 </div>
-                 <div class="row">
-                    <div class="col-3 d-flex justify-content-end">
-                    <h6> PDK  </h6>   
-                    </div>
-                    <div class="col-6">   <h6>   : <?=$master['pdk']?>  </h6></div>
-                 </div>
-                 <div class="row">
-                    <div class="col-3 d-flex justify-content-end">
-                    <h6> No Order  </h6>   
-                    </div>
-                    <div class="col-6">   <h6>   : <?=$master['no_order']?>  </h6></div>
-                 </div>
-              
+                  <div class="col-3  d-flex justify-content-end">
+                    <h5> No Barcode </h5>
+                  </div>
+                  <div class="col-6">
+                    <h5> : <?= $master['barcode_real'] ?> </h5>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-3 d-flex justify-content-end">
+                    <h6> PO </h6>
+                  </div>
+                  <div class="col-6">
+                    <h6> : <?= $master['po'] ?> </h6>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-3 d-flex justify-content-end">
+                    <h6> Buyer </h6>
+                  </div>
+                  <div class="col-6">
+                    <h6> : <?= $master['buyer'] ?> </h6>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-3 d-flex justify-content-end">
+                    <h6> PDK </h6>
+                  </div>
+                  <div class="col-6">
+                    <h6> : <?= $master['pdk'] ?> </h6>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-3 d-flex justify-content-end">
+                    <h6> No Order </h6>
+                  </div>
+                  <div class="col-6">
+                    <h6> : <?= $master['no_order'] ?> </h6>
+                  </div>
+                </div>
+
               </div>
               <div class="col-6 ">
                 <div class="row">
-                    <form action="<?=base_url('aksesoris/cekbarcode')?>" method="post">
+                  <form action="<?= base_url($role . '/cekbarcode') ?>" method="post">
                     <div class="form-control">
-                        <input type="text" class="form-control" id="barcodeScan" name="barcodeScan" placeholder="Barcode"  oninput="periksaBarcodeOtomatis(this)" autofocus>
-                        <input type="text" name="barcode_real" value="<?=$master['barcode_real']?>">
-                    
+                      <input type="text" class="form-control" id="barcode_check" name="barcode_check" placeholder="Barcode" oninput="periksaBarcodeOtomatis(this)" autofocus>
+                      <input type="text" name="barcode_real" id="barcodereal" value="<?= $master['barcode_real'] ?>">
+                      <input type="text" name="id_data" id="id_data" value="<?= $master['id_data'] ?>">
+                      <input type="text" name="status" id="status">
+
                     </div>
-                    </form>
+                  </form>
                 </div>
                 <div class="row">
-                    <h1 id="pesan">
-                        Barcode sesuai
-                    </h1>
+                  <h1 id="pesan">aaa</h1>
                 </div>
               </div>
             </div>
-                  
+
             <!-- Table with stripped rows -->
             <table id="dataTable" class="table datatable">
               <thead style="text-align: center;">
@@ -93,20 +103,26 @@
                 </tr>
               </thead>
               <tbody style="text-align: center;">
-                <?php 
-                  $no = 1;
-                  foreach ($barcodeData as $row) : ?>
-                    <tr>
-                        <th scope="row"><?= $no++; ?></th>
-                        <td><?= $row['created_at']; ?></td>
-                        <td><?= $row['barcode_real']; ?></td>
-                        <td><?= $row['status_scan']; ?></td>
-                        <td><?= $row['barcode_scan']; ?></td>
-                        <td><?= $row['admin']; ?></td>
-                     
-                    </tr>
-                    <?php 
-                  endforeach; 
+                <?php
+                $no = 1;
+                foreach ($barcodeData as $row) : ?>
+                  <tr>
+                    <th scope="row"><?= $no++; ?></th>
+                    <td><?= $row['created_at']; ?></td>
+                    <td><?= $row['barcode_real']; ?></td>
+                    <?php
+                    if ($row['status_scan'] == "Barcode sesuai") {
+                      $colorFont = "style='color: green'";
+                    } else {
+                      $colorFont = "style='color: red'";
+                    } ?>
+                    <td <?= $colorFont ?>><?= $row['status_scan']; ?></td>
+                    <td><?= $row['barcode_scan']; ?></td>
+                    <td><?= $row['admin']; ?></td>
+
+                  </tr>
+                <?php
+                endforeach;
                 ?>
               </tbody>
             </table>
@@ -117,6 +133,21 @@
       </div>
     </div>
   </section>
+
+  <script src="<? base_url('assets/js/jquery3-6-0.min.js') ?>"></script>
+  <script>
+    function periksaBarcodeOtomatis(input) {
+      var barcodeCheck = input.value;
+      var barcodereal = getElementById('barcodereal').value;
+      if (barcodeCheck !== '') {
+        if (barcodeCheck === barcodereal) {
+          document.getElementById('pesan').innerHTML = "<font color='green' size='12'><b>Barcode sesuai</b></font>";
+        } else {
+          document.getElementById('pesan').innerHTML = "<font color='green' size='12'><b>Barcode tidak sesuai</b></font>";
+        }
+      }
+    }
+  </script>
 
 </main><!-- End #main -->
 <?php $this->endSection(); ?>

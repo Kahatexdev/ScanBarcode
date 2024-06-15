@@ -25,10 +25,16 @@
             <div class="row d-flex">
               <div class="col-6">&nbsp;</div>
               <div class="col-6 d-flex justify-content-end">
-              <a href="<?= base_url('aksesoris/dataPO/'.$id_po)?>" class="btn btn-outline-dark mx-3" ><strong> Ganti PDK</strong></a> 
+                <a href="<?= base_url('aksesoris/dataPO/' . $id_po) ?>" class="btn btn-outline-dark mx-3"><strong> Ganti PDK</strong></a>
 
                 <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#smallModal"><strong>+ Barcode</strong></button>
               </div>
+              <?php if (session()->has('succes')) : ?>
+                <div style="color: green;"><?php echo session('succes'); ?></div>
+              <?php endif; ?>
+              <?php if (session()->has('error')) : ?>
+                <div style="color: red;"><?php echo session('error'); ?></div>
+              <?php endif; ?>
               <!-- isi dari modal +PO -->
               <div class="modal fade" id="smallModal" tabindex="-1">
                 <div class="modal-dialog modal-sm">
@@ -41,6 +47,7 @@
                       <div class="modal-body">
                         <div class="form-group">
                           <label>PDK</label>
+                          <input type="text" class="form-control" name="id_po" id="id_po" value="<?= $id_po ?>" required readonly>
                           <input type="text" class="form-control" name="id_pdk" id="id_pdk" value="<?= $id_pdk ?>" required readonly>
                           <input type="text" class="form-control" name="pdk" id="pdk" value="<?= $pdk ?>" required readonly>
                         </div>
@@ -51,9 +58,9 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
-                  </form>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div><!--End isi modal +PO -->
@@ -70,17 +77,17 @@
                 </tr>
               </thead>
               <tbody style="text-align: center;">
-                <?php 
-                  $no = 1;
-                  foreach ($detailpdk as $row) : ?>
-                    <tr>
-                        <th scope="row"><?= $no++; ?></th>
-                        <td><?= $row['barcode_real']; ?></td>
-                        <td></td>
-                        <td><a href="<?= base_url($role . '/scanBarcode/' . $row['id_data']) ?>" class="btn btn-info">Scan</a></td>
-                    </tr>
-                    <?php 
-                  endforeach; 
+                <?php
+                $no = 1;
+                foreach ($detailpdk as $row) : ?>
+                  <tr>
+                    <th scope="row"><?= $no++; ?></th>
+                    <td><?= $row['barcode_real']; ?></td>
+                    <td></td>
+                    <td><a href="<?= base_url($role . '/scanBarcode/' . $row['id_data']) ?>" class="btn btn-info">Scan</a></td>
+                  </tr>
+                <?php
+                endforeach;
                 ?>
               </tbody>
             </table>

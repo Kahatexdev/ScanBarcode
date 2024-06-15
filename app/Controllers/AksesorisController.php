@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Database\Migrations\DetailInput;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\MasterPOModel;
 use App\Models\MasterPDKModel;
@@ -22,6 +23,7 @@ class AksesorisController extends BaseController
         $this->poModel = new MasterPOModel();
         $this->pdkModel = new MasterPDKModel();
         $this->inputModel = new MasterInputModel();
+        $this->detailModel = new DetailInputModel();
         if ($this->filters = ['role' => ['aksesoris', session()->get('role')]] !== session()->get('role')) {
             return redirect()->to(base_url('/'));
         }
@@ -67,6 +69,20 @@ class AksesorisController extends BaseController
         }
     }
     // proses input PO
+    public function edittPO($id_po)
+    {
+        $dataPo = $this->poModel->getPo();
+        $data = [
+            '',
+        ];
+        $insert = $this->poModel->insert($data);
+        if ($insert) {
+            return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('success', 'Data Berhasil Di Input');
+        } else {
+            return redirect()->to(base_url(session()->get('role')))->withInput()->with('error', 'Terjadi Kesalahan Saat Menginput Data.');
+        }
+    }
+    // proses input PO
     public function hapusPO($id_po)
     {
         $delete = $this->poModel->delete($id_po);
@@ -76,8 +92,6 @@ class AksesorisController extends BaseController
             return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('error', 'Data Gagal Dihapus');
         }
     }
-
-
 
 
     // detail PO
@@ -128,15 +142,16 @@ class AksesorisController extends BaseController
         }
     }
 
-    public function scanbarcode($idbarcode){
+    public function scanbarcode($idbarcode)
+    {
         $idpdk = $this->inputModel->getIdPdk($idbarcode);
         $pdk = $this->pdkModel->getData($idpdk);
-        $barcodedata= $this->detailModel->getAllData($idbarcode);
+        $barcodedata = $this->detailModel->getAllData($idbarcode);
         $data = [
             'role' => session()->get('role'),
             'title' => 'Scan Barcode',
-            'master' =>$pdk,
-            'barcodeData'=>$barcodedata
+            'master' => $pdk,
+            'barcodeData' => $barcodedata
         ];
         return view('Aksesoris/scanBarcode', $data);
     }
@@ -192,7 +207,7 @@ class AksesorisController extends BaseController
         $pdk = $this->pdkModel->getPDK($id_pdk);
 
         $data = [
-            'id_po'=>$id_po,
+            'id_po' => $id_po,
             'role' => session()->get('role'),
             'title' => 'Detail PDK ' . $pdk,
             'id_pdk' => $id_pdk,
@@ -205,6 +220,7 @@ class AksesorisController extends BaseController
     // proses input Master Barcode
     public function inputMasterBarcode()
     {
+        $id_po     = $this->request->getPost("id_po");
         $id_pdk     = $this->request->getPost("id_pdk");
         $barcode_real  = $this->request->getPost("barcode_real");
 
@@ -221,11 +237,11 @@ class AksesorisController extends BaseController
             ];
             $insert = $this->inputModel->insert($data);
             if ($insert) {
-                return redirect()->to(base_url(session()->get('role') . '/dataPDK/' . $id_pdk))->withInput()->with('success', 'Barcode Berhasil Di Input');
+                return redirect()->to(base_url(session()->get('role') . '/dataPDK/' . $id_po . '/' . $id_pdk))->withInput()->with('success', 'Barcode Berhasil Di Input');
             }
             // var_dump($data);
         } else {
-            return redirect()->to(base_url(session()->get('role') . '/dataPDK/' . $id_pdk))->withInput()->with('error', 'PDK dengan Barcode tersebut Sudah Ada!');;
+            return redirect()->to(base_url(session()->get('role') . '/dataPDK/' . $id_po . '/' . $id_pdk))->withInput()->with('error', 'PDK dengan Barcode tersebut Sudah Ada!');;
             // echo "bbb";
         }
     }

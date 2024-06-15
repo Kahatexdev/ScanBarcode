@@ -47,21 +47,22 @@ class MasterInputModel extends Model
     public function getDetailPDK($id_pdk)
     {
         return $this->select('master_pdk.id_pdk, master_pdk.pdk, master_input.*')
-        ->where('master_pdk.id_pdk', $id_pdk)
-        ->join('master_pdk', 'master_pdk.id_pdk = master_input.id_pdk')
-        ->findAll();
+            ->where('master_pdk.id_pdk', $id_pdk)
+            ->join('master_pdk', 'master_pdk.id_pdk = master_input.id_pdk')
+            ->findAll();
     }
 
-    public function cekDuplikatBarcode($validate) {
+    public function cekDuplikatBarcode($validate)
+    {
         $query = $this->where('id_pdk', $validate['id_pdk'])
             ->where('barcode_real ', $validate['barcode_real'])
             ->first();
         return $query;
     }
-   public function getIdPdk($idbarcode){
-    $id = $this->select('id_pdk')->where('id_data',$idbarcode)->first();
-    $res = reset($id);
-    return $res;
-   }
-
+    public function getIdPdk($idbarcode)
+    {
+        $id = $this->select('id_pdk')->where('id_data', $idbarcode)->first();
+        $res = reset($id);
+        return $res;
+    }
 }

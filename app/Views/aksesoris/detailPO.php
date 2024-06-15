@@ -25,7 +25,7 @@
             <div class="row d-flex">
               <div class="col-6">&nbsp;</div>
               <div class="col-6 d-flex justify-content-end">
-                <a href="<?= base_url('aksesoris')?>" class="btn btn-outline-dark mx-3" ><strong> Ganti PO</strong></a> 
+                <a href="<?= base_url('aksesoris') ?>" class="btn btn-outline-dark mx-3"><strong> Ganti PO</strong></a>
                 <button type="button" class="btn btn-outline-dark mx-2" data-bs-toggle="modal" data-bs-target="#smallModal"><strong>+ PDK</strong></button>
               </div>
               <!-- isi dari modal +PO -->
@@ -54,9 +54,9 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
-                  </form>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div><!--End isi modal +PO -->
@@ -73,17 +73,17 @@
                 </tr>
               </thead>
               <tbody style="text-align: center;">
-                <?php 
-                  $no = 1;
-                  foreach ($detailpo as $row) : ?>
-                    <tr>
-                        <th scope="row"><?= $no++; ?></th>
-                        <td><?= $row['pdk']; ?></td>
-                        <td><?= $row['no_order']; ?></td>
-                        <td><a href="<?= base_url($role . '/dataPDK/' .$id_po .'/'. $row['id_pdk']) ?>" class="btn btn-info text-white">Detail</a></td>
-                    </tr>
-                    <?php 
-                  endforeach; 
+                <?php
+                $no = 1;
+                foreach ($detailpo as $row) : ?>
+                  <tr>
+                    <th scope="row"><?= $no++; ?></th>
+                    <td><?= $row['pdk']; ?></td>
+                    <td><?= $row['no_order']; ?></td>
+                    <td><a href="<?= base_url($role . '/dataPDK/' . $id_po . '/' . $row['id_pdk']) ?>" class="btn btn-info text-white">Detail</a></td>
+                  </tr>
+                <?php
+                endforeach;
                 ?>
               </tbody>
             </table>
