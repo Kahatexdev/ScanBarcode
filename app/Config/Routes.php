@@ -18,9 +18,9 @@ $routes->group('/aksesoris', ['filter' => 'aksesoris'], function ($routes) {
     $routes->post('prosesHapusPO', 'AksesorisController::hapusPO/$1');
     $routes->get('dataPO/(:num)', 'AksesorisController::detailPO/$1');
     $routes->post('prosesInputPDK', 'AksesorisController::inputPDK');
-    $routes->get('dataPDK/(:num)', 'AksesorisController::detailPDK/$1');
+    $routes->get('dataPDK/(:num)/(:num)', 'AksesorisController::detailPDK/$1/$2');
     $routes->post('prosesInputBarcode', 'AksesorisController::inputMasterBarcode');
-
+    $routes->get('scanBarcode/(:num)', 'AksesorisController::scanbarcode/$1');
 
 });
 

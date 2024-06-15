@@ -100,7 +100,7 @@
                     <td><?= $row['po']; ?></td>
                     <td><?= $row['buyer']; ?></td>
                     <td>
-                      <a href="<?= base_url($role . '/dataPO/' . $row['id_po']) ?>" class="btn btn-info">Detail</a>
+                      <a href="<?= base_url($role . '/dataPO/' . $row['id_po']) ?>" class="btn btn-info text-white">Detail</a>
                       <!-- button delete di hide -->
                       <a href="<?= base_url($role . '/prosesHapusPO/' . $row['id_po']) ?>"><i class="bx bxs-trash d-none"></i></a>
                     </td>

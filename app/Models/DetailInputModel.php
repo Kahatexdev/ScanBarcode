@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class MasterInputModel extends Model
+class DetailInputModel extends Model
 {
-    protected $table            = 'master_input';
-    protected $primaryKey       = 'id_data';
+    protected $table            = 'detail_input';
+    protected $primaryKey       = 'id_input';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_data', 'id_pdk', 'barcode_real', 'created_at'];
+    protected $allowedFields    = ['id_data','barcode_cek','status','created_at','admin'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -21,11 +21,11 @@ class MasterInputModel extends Model
     protected array $castHandlers = [];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
-    protected $updatedField  = false;
-    protected $deletedField  = false;
+    protected $updatedField  = 'updated_at';
+    protected $deletedField  = 'deleted_at';
 
     // Validation
     protected $validationRules      = [];
@@ -44,24 +44,10 @@ class MasterInputModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getDetailPDK($id_pdk)
-    {
-        return $this->select('master_pdk.id_pdk, master_pdk.pdk, master_input.*')
-        ->where('master_pdk.id_pdk', $id_pdk)
-        ->join('master_pdk', 'master_pdk.id_pdk = master_input.id_pdk')
+
+    public function getAllData($id){
+        return $this->where('detail_input.id_data',$id)
+        ->join('master_input','master_input.id_data = detail_input.id_data')
         ->findAll();
     }
-
-    public function cekDuplikatBarcode($validate) {
-        $query = $this->where('id_pdk', $validate['id_pdk'])
-            ->where('barcode_real ', $validate['barcode_real'])
-            ->first();
-        return $query;
-    }
-   public function getIdPdk($idbarcode){
-    $id = $this->select('id_pdk')->where('id_data',$idbarcode)->first();
-    $res = reset($id);
-    return $res;
-   }
-
 }

@@ -22,14 +22,15 @@
           <div class="card-body">
             <h5 class="card-title"></h5>
             <!-- <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
-            <div class="row">
-              <div class="col-11">&nbsp;</div>
-              <div class="col-1">
-                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#smallModal"><strong>+ PDK</strong></button>
+            <div class="row d-flex">
+              <div class="col-6">&nbsp;</div>
+              <div class="col-6 d-flex justify-content-end">
+                <a href="<?= base_url('aksesoris')?>" class="btn btn-outline-dark mx-3" ><strong> Ganti PO</strong></a> 
+                <button type="button" class="btn btn-outline-dark mx-2" data-bs-toggle="modal" data-bs-target="#smallModal"><strong>+ PDK</strong></button>
               </div>
               <!-- isi dari modal +PO -->
               <div class="modal fade" id="smallModal" tabindex="-1">
-                <div class="modal-dialog modal-sm">
+                <div class="modal-dialog modal-md">
                   <div class="modal-content">
                     <form action="<?= base_url($role . '/prosesInputPDK') ?>" method="POST">
                       <div class="modal-header">
@@ -39,8 +40,8 @@
                       <div class="modal-body">
                         <div class="form-group">
                           <label>PO</label>
-                          <input type="text" class="form-control" name="id_po" id="id_po" value="<?= $id_po ?>" required readonly>
-                          <input type="text" class="form-control" name="po" id="po" value="<?= $no_po ?>" required readonly>
+                          <input type="text" class="form-control text-primary text-bold" name="id_po" id="id_po" value="<?= $id_po ?>" required readonly>
+                          <input type="text" class="form-control mt-2 text-primary text-bold" name="po" id="po" value="<?= $no_po ?>" required readonly>
                         </div>
                         <div class="form-group">
                           <label>PDK</label>
@@ -79,7 +80,7 @@
                         <th scope="row"><?= $no++; ?></th>
                         <td><?= $row['pdk']; ?></td>
                         <td><?= $row['no_order']; ?></td>
-                        <td><a href="<?= base_url($role . '/dataPDK/' . $row['id_pdk']) ?>" class="btn btn-info">Detail</a></td>
+                        <td><a href="<?= base_url($role . '/dataPDK/' .$id_po .'/'. $row['id_pdk']) ?>" class="btn btn-info text-white">Detail</a></td>
                     </tr>
                     <?php 
                   endforeach; 

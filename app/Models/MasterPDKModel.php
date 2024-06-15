@@ -62,14 +62,12 @@ class MasterPDKModel extends Model
         return $query;
         return $query;
     }
-
-    public function insertPDK($data)
-    {
-        return $this->insert($data);
-    }
-
-
-
+     public function getData($id){
+        return $this->where('master_pdk.id_pdk',$id)
+        ->join('master_po','master_po.id_po = master_pdk.id_po')
+        ->join('master_input','master_input.id_pdk = master_pdk.id_pdk')
+        ->first();
+     }
 
 
 

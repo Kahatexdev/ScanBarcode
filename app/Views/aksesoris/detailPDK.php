@@ -22,9 +22,11 @@
           <div class="card-body">
             <h5 class="card-title"></h5>
             <!-- <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
-            <div class="row">
-              <div class="col-10">&nbsp;</div>
-              <div class="col-2">
+            <div class="row d-flex">
+              <div class="col-6">&nbsp;</div>
+              <div class="col-6 d-flex justify-content-end">
+              <a href="<?= base_url('aksesoris/dataPO/'.$id_po)?>" class="btn btn-outline-dark mx-3" ><strong> Ganti PDK</strong></a> 
+
                 <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#smallModal"><strong>+ Barcode</strong></button>
               </div>
               <!-- isi dari modal +PO -->
@@ -75,7 +77,7 @@
                         <th scope="row"><?= $no++; ?></th>
                         <td><?= $row['barcode_real']; ?></td>
                         <td></td>
-                        <td><a href="<?= base_url($role . '/scanBarcode' . $row['id_data']) ?>" class="btn btn-info">Scan</a></td>
+                        <td><a href="<?= base_url($role . '/scanBarcode/' . $row['id_data']) ?>" class="btn btn-info">Scan</a></td>
                     </tr>
                     <?php 
                   endforeach; 

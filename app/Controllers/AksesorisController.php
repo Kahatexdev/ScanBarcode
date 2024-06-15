@@ -7,6 +7,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\MasterPOModel;
 use App\Models\MasterPDKModel;
 use App\Models\MasterInputModel;
+use App\Models\DetailInputModel;
 
 
 class AksesorisController extends BaseController
@@ -15,11 +16,13 @@ class AksesorisController extends BaseController
     protected $poModel;
     protected $pdkModel;
     protected $inputModel;
+    protected $detailModel;
     public function __construct()
     {
         $this->poModel = new MasterPOModel();
         $this->pdkModel = new MasterPDKModel();
         $this->inputModel = new MasterInputModel();
+        $this->detailModel = new DetailInputModel();
         if ($this->filters   = ['role' => ['aksesoris', session()->get('role') . '', 'acc', 'acc']] != session()->get('role')) {
             return redirect()->to(base_url('/login'));
         }
@@ -126,6 +129,19 @@ class AksesorisController extends BaseController
         }
     }
 
+    public function scanbarcode($idbarcode){
+        $idpdk = $this->inputModel->getIdPdk($idbarcode);
+        $pdk = $this->pdkModel->getData($idpdk);
+        $barcodedata= $this->detailModel->getAllData($idbarcode);
+        $data = [
+            'role' => session()->get('role'),
+            'title' => 'Scan Barcode',
+            'master' =>$pdk,
+            'barcodeData'=>$barcodedata
+        ];
+        return view('Aksesoris/scanBarcode', $data);
+    }
+
 
 
 
@@ -171,12 +187,13 @@ class AksesorisController extends BaseController
 
 
     // detail PDK
-    public function detailPDK($id_pdk)
+    public function detailPDK($id_po, $id_pdk)
     {
         $detailPdk = $this->inputModel->getDetailPDK($id_pdk);
         $pdk = $this->pdkModel->getPDK($id_pdk);
 
         $data = [
+            'id_po'=>$id_po,
             'role' => session()->get('role'),
             'title' => 'Detail PDK ' . $pdk,
             'id_pdk' => $id_pdk,
