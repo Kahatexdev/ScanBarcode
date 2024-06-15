@@ -12,6 +12,7 @@ user_guide_src/cilexer/dist/*
 user_guide_src/cilexer/pycilexer.egg-info/*
 
 writable/logs
+writable/debugbar
 
 
 #codeigniter 3

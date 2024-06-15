@@ -58,22 +58,22 @@ class AksesorisController extends BaseController
             if ($insert) {
                 return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('success', 'Data Berhasil Di Input');
             } else {
-                return redirect()->to(base_url(session()->get('role')))->withInput()->with('error', 'Terjadi kesalahan saat menginput data.');
+                return redirect()->to(base_url(session()->get('role')))->withInput()->with('error', 'Terjadi Kesalahan Saat Menginput Data.');
             }
         } else {
             return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('error', 'Data PO Sudah Ada!');;
         }
     }
-
-
-
-
-
-
-
-
-
-
+    // proses input PO
+    public function hapusPO($id_po)
+    {
+        $delete = $this->poModel->delete($id_po);
+        if ($delete) {
+            return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('success', 'Data PO Berhasil Di Input');
+        } else {
+            return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('error', 'Data Gagal Dihapus');
+        }
+    }
 
 
 
