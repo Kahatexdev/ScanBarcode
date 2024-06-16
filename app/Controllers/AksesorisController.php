@@ -102,9 +102,9 @@ class AksesorisController extends BaseController
 
         $data = [
             'role' => session()->get('role'),
-            'title' => 'List PDK PO ' . $noPo,
+            'title' => 'List PDK PO ' . $noPo['po'],
             'id_po' => $id_po,
-            'no_po' => $noPo,
+            'no_po' => $noPo['po'],
             'detailpo' => $detailPo,
         ];
         return view('Aksesoris/detailPO', $data);
@@ -244,5 +244,18 @@ class AksesorisController extends BaseController
             return redirect()->to(base_url(session()->get('role') . '/dataPDK/' . $id_po . '/' . $id_pdk))->withInput()->with('error', 'PDK dengan Barcode tersebut Sudah Ada!');;
             // echo "bbb";
         }
+    }
+
+    //halaman report
+    public function report()
+    {
+        $dataPo = $this->poModel->getPo();
+
+        $data = [
+            'role' => session()->get('role'),
+            'title' => 'Report Scan Barcode Per PO',
+            'po' => $dataPo,
+        ];
+        return view(session()->get('role') . '/reportBarcode', $data);
     }
 }

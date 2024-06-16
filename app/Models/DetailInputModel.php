@@ -12,7 +12,7 @@ class DetailInputModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_data','barcode_cek','status','created_at','admin'];
+    protected $allowedFields    = ['id_data', 'barcode_cek', 'status', 'created_at', 'admin'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -45,9 +45,38 @@ class DetailInputModel extends Model
     protected $afterDelete    = [];
 
 
-    public function getAllData($id){
-        return $this->where('detail_input.id_data',$id)
-        ->join('master_input','master_input.id_data = detail_input.id_data')
-        ->findAll();
+    public function getAllData($id)
+    {
+        return $this->where('detail_input.id_data', $id)
+            ->join('master_input', 'master_input.id_data = detail_input.id_data')
+            ->findAll();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //report excel
+    public function getDataExcel($id_po)
+    {
+        return $this->select('master_po.*, master_pdk.id_pdk, master_pdk.pdk, master_input.*, detail_input.*')
+            ->where('master_po.id_po', $id_po)
+            ->join('master_input', 'master_input.id_data = detail_input.id_data')
+            ->join('master_pdk', 'master_pdk.id_pdk = master_input.id_pdk')
+            ->join('master_po', 'master_po.id_po = master_pdk.id_po')
+            ->findAll();
     }
 }

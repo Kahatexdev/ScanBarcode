@@ -59,6 +59,7 @@ class MasterInputModel extends Model
             ->first();
         return $query;
     }
+
     public function getIdPdk($idbarcode)
     {
         $id = $this->select('id_pdk')->where('id_data', $idbarcode)->first();

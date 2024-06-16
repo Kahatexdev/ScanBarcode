@@ -159,7 +159,7 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-blank.html">
+        <a class="nav-link collapsed" href="<?= base_url($role . '/report') ?>">
           <i class="bi bi-file-earmark"></i>
           <span>Report</span>
         </a>

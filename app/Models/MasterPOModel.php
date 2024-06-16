@@ -62,9 +62,8 @@ class MasterPOModel extends Model
 
     public function getNomorPO($id_po)
     {
-        return $this->select('po')
+        return $this->select('po, buyer')
             ->where('id_po', $id_po)
-            ->get()
-            ->getRowArray()['po'];
+            ->first();
     }
 }
