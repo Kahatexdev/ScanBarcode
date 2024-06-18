@@ -88,7 +88,7 @@
                                     <th scope="col">No</th>
                                     <th scope="col">PO</th>
                                     <th scope="col">Buyer</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Report</th>
                                 </tr>
                             </thead>
                             <tbody style="text-align: center;">
@@ -100,7 +100,7 @@
                                         <td><?= $row['po']; ?></td>
                                         <td><?= $row['buyer']; ?></td>
                                         <td>
-                                            <a href="<?= base_url($role . '/excelReport/' . $row['id_po']) ?>"><i class="ri-file-excel-line"></i></a>
+                                            <a href="<?= base_url($role . '/excelReport/' . $row['id_po']) ?>"><i class="ri-file-excel-2-line" style="font-size: 32px;"></i></a>
                                         </td>
                                     </tr>
                                 <?php

@@ -49,6 +49,9 @@ class ExcelController extends BaseController
     public function export($id_po)
     {
         $data = $this->detailModel->getDataExcel($id_po);
+        $scan = $this->detailModel->getQtyScan($id_po);
+        $sesuai = $this->detailModel->getQtySesuai($id_po);
+        $tdkSesuai = $this->detailModel->getQtyTidakSesuai($id_po);
         $po = $this->poModel->getNomorPO($id_po);
 
         $spreadsheet = new Spreadsheet();
@@ -68,9 +71,9 @@ class ExcelController extends BaseController
         $sheet->setCellValue('E3', 'Qty Scan');
         $sheet->setCellValue('E4', 'Qty Sesuai');
         $sheet->setCellValue('E5', 'Qty Tidak Sesuai');
-        $sheet->setCellValue('F3', ': ');
-        $sheet->setCellValue('F4', ': ');
-        $sheet->setCellValue('F5', ': ');
+        $sheet->setCellValue('F3', ': ' . $scan);
+        $sheet->setCellValue('F4', ': ' . $sesuai);
+        $sheet->setCellValue('F5', ': ' . $tdkSesuai);
 
         // Set header
         $sheet->setCellValue('A6', 'No');
@@ -112,11 +115,11 @@ class ExcelController extends BaseController
         $row = 7;
         $no = 1;
         foreach ($data as $item) {
-            $sheet->setCellValue('A' . $row, $no++);
+            $sheet->setCellValue('A' . $row, $no);
             $sheet->setCellValue('B' . $row, $item['pdk']);
             $sheet->setCellValue('C' . $row, $item['no_order']);
             $sheet->setCellValue('D' . $row, $item['barcode_real']);
-            $sheet->setCellValue('E' . $row, $item['barcode_scan']);
+            $sheet->setCellValue('E' . $row, $item['barcode_cek']);
             $sheet->setCellValue('F' . $row, $item['status']);
             $sheet->getStyle('A' . $row . ':F' . $row)->applyFromArray($dataStyle);
             $row++;
