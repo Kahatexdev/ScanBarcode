@@ -75,18 +75,19 @@
               </div>
               <div class="col-6 ">
                 <div class="row">
-                  <form action="<?= base_url($role . '/cekbarcode') ?>" method="post">
+                  <form action="<?= base_url($role . '/prosesInputCheckBarcode') ?>" method="POST">
                     <div class="form-control">
                       <input type="text" class="form-control" id="barcode_check" name="barcode_check" placeholder="Barcode" oninput="periksaBarcodeOtomatis(this)" autofocus>
-                      <input type="text" name="barcode_real" id="barcodereal" value="<?= $master['barcode_real'] ?>">
-                      <input type="text" name="id_data" id="id_data" value="<?= $master['id_data'] ?>">
-                      <input type="text" name="status" id="status">
+                      <input type="hidden" name="barcode_real" id="barcodereal" value="<?= $master['barcode_real'] ?>">
+                      <input type="hidden" name="id_data" id="id_data" value="<?= $master['id_data'] ?>">
+                      <input type="hidden" name="id_data" id="id_pdk" value="<?= $master['id_pdk'] ?>">
+                      <input type="hidden" name="status" id="status">
 
                     </div>
                   </form>
                 </div>
                 <div class="row">
-                  <h1 id="pesan">aaa</h1>
+                  <h1 id="pesan"></h1>
                 </div>
               </div>
             </div>
@@ -95,6 +96,7 @@
             <table id="dataTable" class="table datatable">
               <thead style="text-align: center;">
                 <tr>
+                  <th scope="col">No</th>
                   <th scope="col">Tanggal Scan</th>
                   <th scope="col">Barcode Actual</th>
                   <th scope="col">Status Scan</th>
@@ -111,13 +113,16 @@
                     <td><?= $row['created_at']; ?></td>
                     <td><?= $row['barcode_real']; ?></td>
                     <?php
-                    if ($row['status_scan'] == "Barcode sesuai") {
-                      $colorFont = "style='color: green'";
-                    } else {
-                      $colorFont = "style='color: red'";
-                    } ?>
-                    <td <?= $colorFont ?>><?= $row['status_scan']; ?></td>
-                    <td><?= $row['barcode_scan']; ?></td>
+                    if ($row['status'] == "Barcode Sesuai") { ?>
+                      <td>
+                        <font color="green"><?= $row['status']; ?></font>
+                      </td>
+                    <?php } else { ?>
+                      <td>
+                        <font color="red"><?= $row['status']; ?></font>
+                      </td>
+                    <?php } ?>
+                    <td><?= $row['barcode_cek']; ?></td>
                     <td><?= $row['admin']; ?></td>
 
                   </tr>
@@ -134,17 +139,46 @@
     </div>
   </section>
 
-  <script src="<? base_url('assets/js/jquery3-6-0.min.js') ?>"></script>
   <script>
+    // variabel audio
+    var audio = new Audio("<?= base_url('assets/audio/emergency.mp3') ?>");
+
     function periksaBarcodeOtomatis(input) {
       var barcodeCheck = input.value;
-      var barcodereal = getElementById('barcodereal').value;
+      var barcodereal = document.getElementById('barcodereal').value;
       if (barcodeCheck !== '') {
         if (barcodeCheck === barcodereal) {
-          document.getElementById('pesan').innerHTML = "<font color='green' size='12'><b>Barcode sesuai</b></font>";
+          document.getElementById('pesan').innerHTML = "<font color='green' size='12'><b>Barcode Sesuai</b></font>";
+          document.getElementById('status').value = "Barcode Sesuai";
         } else {
-          document.getElementById('pesan').innerHTML = "<font color='green' size='12'><b>Barcode tidak sesuai</b></font>";
+          document.getElementById('pesan').innerHTML = "<font color='red' size='12'><b>Barcode Tidak Sesuai</b></font>";
+          document.getElementById('status').value = "Barcode Tidak Sesuai";
+          // play audio
+          audio.play();
+          // Hentikan audio setelah 3 detik
+          setTimeout(function() {
+            audio.pause();
+            audio.currentTime = 0; // Ulangi audio dari awal jika dimainkan lagi
+          }, 3000); // 3000 milidetik = 3 detik
         }
+        var status = $("#status").val();
+        var idData = $("#id_data").val();
+        var idPdk = $("#id_pdk").val();
+        var url = "<?= base_url($role . '/prosesInputCheckBarcode') ?>";
+        $.ajax({
+          url: url,
+          type: "POST",
+          data: {
+            id_pdk: idPdk,
+            barcode_check: barcodeCheck,
+            id_data: idData,
+            status: status
+          },
+        });
+        // Refresh halaman setelah 3 detik
+        setTimeout(function() {
+          window.location.reload();
+        }, 3000);
       }
     }
   </script>

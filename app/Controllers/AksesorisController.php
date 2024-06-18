@@ -79,7 +79,7 @@ class AksesorisController extends BaseController
         if ($insert) {
             return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('success', 'Data Berhasil Di Input');
         } else {
-            return redirect()->to(base_url(session()->get('role')))->withInput()->with('error', 'Terjadi Kesalahan Saat Menginput Data.');
+            return redirect()->to(base_url(session()->get('role')))->withInput()->with('error', 'Terjadi Kesalahan Saat Menginput Data');
         }
     }
     // proses input PO
@@ -134,6 +134,8 @@ class AksesorisController extends BaseController
             $insert = $this->pdkModel->insert($data);
             if ($insert) {
                 return redirect()->to(base_url(session()->get('role') . '/dataPO/' . $id_po))->withInput()->with('success', 'Data PDK Berhasil Di Input');
+            } else {
+                return redirect()->to(base_url(session()->get('role') . '/dataPO/' . $id_po))->withInput()->with('error', 'Terjadi Kesalahan Saat Menginput Data');
             }
             // var_dump($data);
         } else {
@@ -154,6 +156,27 @@ class AksesorisController extends BaseController
             'barcodeData' => $barcodedata
         ];
         return view('Aksesoris/scanBarcode', $data);
+    }
+
+    public function inputCheckBarcode()
+    {
+        $id_pdk = $this->request->getPost("id_pdk");
+        $barcode_check = $this->request->getPost("barcode_check");
+        $id_data = $this->request->getPost("id_data");
+        $status = $this->request->getPost("status");
+        $data = [
+            'id_data' => $id_data,
+            'barcode_check' => $barcode_check,
+            'status' => $status,
+            'created_at' => date('Y-m-d H:i:s'),
+            'admin' => session()->get('username'),
+        ];
+        $insert = $this->detailModel->insert($data);
+        if ($insert) {
+            return redirect()->to(base_url(session()->get('role') . '/scanBarcode/' . $id_pdk));
+        } else {
+            return redirect()->to(base_url(session()->get('role') . '/scanBarcode/' . $id_pdk))->withInput()->with('error', 'Terjadi Kesalahan Saat Menginput Data');
+        }
     }
 
 

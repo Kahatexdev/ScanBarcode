@@ -27,6 +27,7 @@ $routes->group('/aksesoris', ['filter' => 'aksesoris'], function ($routes) {
     $routes->post('prosesInputBarcode', 'AksesorisController::inputMasterBarcode');
     // Scan cek barcode
     $routes->get('scanBarcode/(:num)', 'AksesorisController::scanbarcode/$1');
+    $routes->post('prosesInputCheckBarcode', 'AksesorisController::inputCheckBarcode');
 
 
 
