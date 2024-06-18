@@ -40,7 +40,7 @@
                       <div class="modal-body">
                         <div class="form-group">
                           <label>PO</label>
-                          <input type="text" class="form-control text-primary text-bold" name="id_po" id="id_po" value="<?= $id_po ?>" required readonly>
+                          <input type="hidden" class="form-control text-primary text-bold" name="id_po" id="id_po" value="<?= $id_po ?>" required readonly>
                           <input type="text" class="form-control mt-2 text-primary text-bold" name="po" id="po" value="<?= $no_po ?>" required readonly>
                         </div>
                         <div class="form-group">
@@ -61,6 +61,32 @@
                 </div>
               </div><!--End isi modal +PO -->
             </div><br>
+
+            <!-- sweetalert -->
+            <?php if (session()->getFlashdata('success')) : ?>
+              <script>
+                $(document).ready(function() {
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: '<?= session()->getFlashdata('success') ?>',
+                  });
+                });
+              </script>
+            <?php endif; ?>
+
+            <?php if (session()->getFlashdata('error')) : ?>
+              <script>
+                $(document).ready(function() {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: '<?= session()->getFlashdata('error') ?>',
+                  });
+                });
+              </script>
+            <?php endif; ?>
+            <!-- end sweetalert -->
 
             <!-- Table with stripped rows -->
             <table id="dataTable" class="table datatable">

@@ -27,31 +27,6 @@
               <div class="col-1">
                 <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#smallModal"><strong>+ PO</strong></button>
               </div>
-              <!-- sweetalert -->
-              <?php if (session()->getFlashdata('success')) : ?>
-                <script>
-                  $(document).ready(function() {
-                    Swal.fire({
-                      icon: 'success',
-                      title: 'Success!',
-                      text: '<?= session()->getFlashdata('success') ?>',
-                    });
-                  });
-                </script>
-              <?php endif; ?>
-
-              <?php if (session()->getFlashdata('error')) : ?>
-                <script>
-                  $(document).ready(function() {
-                    Swal.fire({
-                      icon: 'error',
-                      title: 'Error!',
-                      text: '<?= session()->getFlashdata('error') ?>',
-                    });
-                  });
-                </script>
-              <?php endif; ?>
-              <!-- end sweetalert -->
               <!-- isi dari modal +PO -->
               <div class="modal fade" id="smallModal" tabindex="-1">
                 <div class="modal-dialog modal-sm">
@@ -80,6 +55,32 @@
                 </div>
               </div><!--End isi modal +PO -->
             </div><br>
+
+            <!-- sweetalert -->
+            <?php if (session()->getFlashdata('success')) : ?>
+              <script>
+                $(document).ready(function() {
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: '<?= session()->getFlashdata('success') ?>',
+                  });
+                });
+              </script>
+            <?php endif; ?>
+
+            <?php if (session()->getFlashdata('error')) : ?>
+              <script>
+                $(document).ready(function() {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: '<?= session()->getFlashdata('error') ?>',
+                  });
+                });
+              </script>
+            <?php endif; ?>
+            <!-- end sweetalert -->
 
             <!-- Table with stripped rows -->
             <table id="dataTable" class="table datatable">
