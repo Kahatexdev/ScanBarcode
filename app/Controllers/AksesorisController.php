@@ -34,9 +34,9 @@ class AksesorisController extends BaseController
         $dataPo = $this->poModel->getPo();
 
         $data = [
-            'role' => session()->get('role'),
+            'role'  => session()->get('role'),
             'title' => 'List PO & Buyer',
-            'po' => $dataPo,
+            'po'    => $dataPo,
         ];
         return view(session()->get('role') . '/halamanUtama', $data);
     }
@@ -48,15 +48,15 @@ class AksesorisController extends BaseController
         $buyer  = $this->request->getPost("buyer");
 
         $validate = [
-            'po' => $po,
+            'po'    => $po,
             'buyer' => $buyer,
         ];
         $check = $this->poModel->cekDuplikatPO($validate);
         if (!$check) {
             $data = [
-                'po' => $po,
-                'buyer' => $buyer,
-                'created_at' => date('Y-m-d H:i:s'),
+                'po'            => $po,
+                'buyer'         => $buyer,
+                'created_at'    => date('Y-m-d H:i:s'),
             ];
             $insert = $this->poModel->insert($data);
             if ($insert) {
@@ -71,11 +71,11 @@ class AksesorisController extends BaseController
     // proses edit PO
     public function editPO($id_po)
     {
-        $id_po     = $this->request->getPost("id_po");
+        $id_po  = $this->request->getPost("id_po");
         $po     = $this->request->getPost("po");
         $buyer  = $this->request->getPost("buyer");
         $data = [
-            'po' => $po,
+            'po'    => $po,
             'buyer' => $buyer
         ];
         $update = $this->poModel->update($id_po, $data);
@@ -98,17 +98,16 @@ class AksesorisController extends BaseController
 
 
     // detail PO
-    public function detailPO($id_po)
+    public function detailPO($id_po, $po)
     {
-        $detailPo = $this->pdkModel->getDetailPO($id_po);
-        $noPo = $this->poModel->getNomorPO($id_po);
+        $detailPo   = $this->pdkModel->getDetailPO($id_po);
 
         $data = [
-            'role' => session()->get('role'),
-            'title' => 'List PDK PO ' . $noPo['po'],
-            'id_po' => $id_po,
-            'no_po' => $noPo['po'],
-            'detailpo' => $detailPo,
+            'role'      => session()->get('role'),
+            'title'     => 'List PDK PO ' . $po,
+            'id_po'     => $id_po,
+            'po'        => $po,
+            'detailpo'  => $detailPo,
         ];
         return view('Aksesoris/detailPO', $data);
     }
@@ -116,62 +115,108 @@ class AksesorisController extends BaseController
     // proses input PDK
     public function inputPDK()
     {
-        $id_po     = $this->request->getPost("id_po");
-        $pdk  = $this->request->getPost("pdk");
-        $no_order  = $this->request->getPost("no_order");
+        $id_po      = $this->request->getPost("id_po");
+        $po         = $this->request->getPost("po");
+        $pdk        = $this->request->getPost("pdk");
+        $no_order   = $this->request->getPost("no_order");
 
         $validate = [
-            'id_po' => $id_po,
-            'pdk' => $pdk,
-            'no_order' => $no_order,
+            'id_po'     => $id_po,
+            'pdk'       => $pdk,
+            'no_order'  => $no_order,
         ];
         $check = $this->pdkModel->cekDuplikatPDK($validate);
         if (!$check) {
             $data = [
-                'id_po' => $id_po,
-                'pdk' => $pdk,
-                'no_order' => $no_order,
-                'created_at' => date('Y-m-d H:i:s'),
-                'admin' => session()->get('username'),
+                'id_po'         => $id_po,
+                'pdk'           => $pdk,
+                'no_order'      => $no_order,
+                'created_at'    => date('Y-m-d H:i:s'),
+                'admin'         => session()->get('username'),
             ];
             $insert = $this->pdkModel->insert($data);
             if ($insert) {
-                return redirect()->to(base_url(session()->get('role') . '/dataPO/' . $id_po))->withInput()->with('success', 'Data PDK Berhasil Di Input');
+                return redirect()->to(base_url(session()->get('role') . '/dataPO/' . $id_po . '/' . $po))->withInput()->with('success', 'Data PDK Berhasil Di Input');
             } else {
-                return redirect()->to(base_url(session()->get('role') . '/dataPO/' . $id_po))->withInput()->with('error', 'Terjadi Kesalahan Saat Menginput Data');
+                return redirect()->to(base_url(session()->get('role') . '/dataPO/' . $id_po . '/' . $po))->withInput()->with('error', 'Terjadi Kesalahan Saat Menginput Data');
             }
             // var_dump($data);
         } else {
-            return redirect()->to(base_url(session()->get('role') . '/dataPO/' . $id_po))->withInput()->with('error', 'Data PDK Sudah Ada!');
+            return redirect()->to(base_url(session()->get('role') . '/dataPO/' . $id_po . '/' . $po))->withInput()->with('error', 'Data PDK Sudah Ada!');
             // echo "bbbb";
+        }
+    }
+
+    // detail PDK
+    public function detailPDK($id_po, $id_pdk)
+    {
+        $detailPdk  = $this->inputModel->getDetailPDK($id_pdk);
+        $pdk        = $this->pdkModel->getPDK($id_pdk);
+
+        $data = [
+            'id_po'     => $id_po,
+            'role'      => session()->get('role'),
+            'title'     => 'Detail PDK ' . $pdk,
+            'id_pdk'    => $id_pdk,
+            'pdk'       => $pdk,
+            'detailpdk' => $detailPdk,
+        ];
+        return view('Aksesoris/detailPDK', $data);
+    }
+
+    // proses input Master Barcode
+    public function inputMasterBarcode()
+    {
+        $id_po          = $this->request->getPost("id_po");
+        $id_pdk         = $this->request->getPost("id_pdk");
+        $barcode_real   = $this->request->getPost("barcode_real");
+
+        $validate = [
+            'id_pdk'        => $id_pdk,
+            'barcode_real'  => $barcode_real,
+        ];
+        $check = $this->inputModel->cekDuplikatBarcode($validate);
+        if (!$check) {
+            $data = [
+                'id_pdk'        => $id_pdk,
+                'barcode_real'  => $barcode_real,
+                'created_at'    => date('Y-m-d H:i:s'),
+            ];
+            $insert = $this->inputModel->insert($data);
+            if ($insert) {
+                return redirect()->to(base_url(session()->get('role') . '/dataPDK/' . $id_po . '/' . $id_pdk))->withInput()->with('success', 'Barcode Berhasil Di Input');
+            } else {
+                return redirect()->to(base_url(session()->get('role') . '/dataPDK/' . $id_po . '/' . $id_pdk))->withInput()->with('error', 'Barcode Gagal Di Input');
+            }
+        } else {
+            return redirect()->to(base_url(session()->get('role') . '/dataPDK/' . $id_po . '/' . $id_pdk))->withInput()->with('error', 'PDK dengan Barcode tersebut Sudah Ada!');;
         }
     }
 
     public function scanbarcode($id_data)
     {
-        // $idpdk = $this->inputModel->getIdPdk($id_data);
-        $pdk = $this->inputModel->getData($id_data);
-        $barcodedata = $this->detailModel->getAllData($id_data);
+        $pdk            = $this->inputModel->getData($id_data);
+        $barcodedata    = $this->detailModel->getAllData($id_data);
         $data = [
-            'role' => session()->get('role'),
-            'title' => 'Scan Barcode',
-            'master' => $pdk,
-            'barcodeData' => $barcodedata
+            'role'          => session()->get('role'),
+            'title'         => 'Scan Barcode',
+            'master'        => $pdk,
+            'barcodeData'   => $barcodedata
         ];
-        return view('Aksesoris/scanBarcode', $data);
+        return view(session()->get('role') . '/scanBarcode', $data);
     }
 
     public function inputCheckBarcode()
     {
-        $barcode_check = $this->request->getPost("barcode_check");
-        $id_data = $this->request->getPost("id_data");
-        $status = $this->request->getPost("status");
+        $barcode_check  = $this->request->getPost("barcode_check");
+        $id_data        = $this->request->getPost("id_data");
+        $status         = $this->request->getPost("status");
         $data = [
-            'id_data' => $id_data,
-            'barcode_cek' => $barcode_check,
-            'status' => $status,
-            'created_at' => date('Y-m-d H:i:s'),
-            'admin' => session()->get('username'),
+            'id_data'       => $id_data,
+            'barcode_cek'   => $barcode_check,
+            'status'        => $status,
+            'created_at'    => date('Y-m-d H:i:s'),
+            'admin'         => session()->get('username'),
         ];
         $insert = $this->detailModel->insert($data);
         if ($insert) {
@@ -181,105 +226,15 @@ class AksesorisController extends BaseController
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // detail PDK
-    public function detailPDK($id_po, $id_pdk)
-    {
-        $detailPdk = $this->inputModel->getDetailPDK($id_pdk);
-        $pdk = $this->pdkModel->getPDK($id_pdk);
-
-        $data = [
-            'id_po' => $id_po,
-            'role' => session()->get('role'),
-            'title' => 'Detail PDK ' . $pdk,
-            'id_pdk' => $id_pdk,
-            'pdk' => $pdk,
-            'detailpdk' => $detailPdk,
-        ];
-        return view('Aksesoris/detailPDK', $data);
-    }
-
-    // proses input Master Barcode
-    public function inputMasterBarcode()
-    {
-        $id_po     = $this->request->getPost("id_po");
-        $id_pdk     = $this->request->getPost("id_pdk");
-        $barcode_real  = $this->request->getPost("barcode_real");
-
-        $validate = [
-            'id_pdk' => $id_pdk,
-            'barcode_real' => $barcode_real,
-        ];
-        $check = $this->inputModel->cekDuplikatBarcode($validate);
-        if (!$check) {
-            $data = [
-                'id_pdk' => $id_pdk,
-                'barcode_real' => $barcode_real,
-                'created_at' => date('Y-m-d H:i:s'),
-            ];
-            $insert = $this->inputModel->insert($data);
-            if ($insert) {
-                return redirect()->to(base_url(session()->get('role') . '/dataPDK/' . $id_po . '/' . $id_pdk))->withInput()->with('success', 'Barcode Berhasil Di Input');
-            }
-            // var_dump($data);
-        } else {
-            return redirect()->to(base_url(session()->get('role') . '/dataPDK/' . $id_po . '/' . $id_pdk))->withInput()->with('error', 'PDK dengan Barcode tersebut Sudah Ada!');;
-            // echo "bbb";
-        }
-    }
-
     //halaman report
     public function report()
     {
         $dataPo = $this->poModel->getPo();
 
         $data = [
-            'role' => session()->get('role'),
+            'role'  => session()->get('role'),
             'title' => 'Report Scan Barcode Per PO',
-            'po' => $dataPo,
+            'po'    => $dataPo,
         ];
         return view(session()->get('role') . '/reportBarcode', $data);
     }

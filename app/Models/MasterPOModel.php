@@ -46,8 +46,7 @@ class MasterPOModel extends Model
 
     public function getPo()
     {
-        return $this->select('id_po,po,buyer')
-            ->orderBy('po')
+        return $this->orderBy('po')
             ->groupBy('id_po')
             ->findAll();
     }

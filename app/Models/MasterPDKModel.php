@@ -60,39 +60,7 @@ class MasterPDKModel extends Model
             ->where('no_order ', $validate['no_order'])
             ->first();
         return $query;
-        return $query;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public function getPDK($id_pdk)
     {

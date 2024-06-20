@@ -41,7 +41,7 @@
                         <div class="form-group">
                           <label>PO</label>
                           <input type="hidden" class="form-control text-primary text-bold" name="id_po" id="id_po" value="<?= $id_po ?>" required readonly>
-                          <input type="text" class="form-control mt-2 text-primary text-bold" name="po" id="po" value="<?= $no_po ?>" required readonly>
+                          <input type="text" class="form-control mt-2 text-primary text-bold" name="po" id="po" value="<?= $po ?>" required readonly>
                         </div>
                         <div class="form-group">
                           <label>PDK</label>

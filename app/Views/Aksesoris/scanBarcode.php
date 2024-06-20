@@ -28,7 +28,6 @@
                 </a>
               </div>
             </div>
-            <!-- <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
             <div class="row d-flex">
               <div class="col-6">
                 <div class="row">
@@ -71,18 +70,16 @@
                     <h6> : <?= $master['no_order'] ?> </h6>
                   </div>
                 </div>
-
               </div>
               <div class="col-6 ">
                 <div class="row">
                   <form action="<?= base_url($role . '/prosesInputCheckBarcode') ?>" method="POST">
                     <div class="form-control">
-                      <input type="text" class="form-control" id="barcode_check" name="barcode_check" placeholder="Barcode" oninput="periksaBarcodeOtomatis(this)" autofocus>
+                      <input type="text" class="form-control" id="barcode_check" name="barcode_check" placeholder="Barcode" autofocus>
                       <input type="hidden" name="barcode_real" id="barcodereal" value="<?= $master['barcode_real'] ?>">
                       <input type="hidden" name="id_data" id="id_data" value="<?= $master['id_data'] ?>">
-                      <input type="text" name="barcode_input" id="barcode_input">
-                      <input type="hidden" name="status" id="status">
-
+                      <input type="hidden" name="id_pdk" id="id_pdk" value="<?= $master['id_pdk'] ?>">
+                      <input type="text" name="status" id="status" class="d-none">
                     </div>
                   </form>
                 </div>
@@ -124,7 +121,6 @@
                     <?php } ?>
                     <td><?= $row['barcode_cek']; ?></td>
                     <td><?= $row['admin']; ?></td>
-
                   </tr>
                 <?php
                 endforeach;
@@ -140,76 +136,64 @@
   </section>
 
   <script>
-    // variabel audio
     var audio = new Audio("<?= base_url('assets/audio/emergency.mp3') ?>");
-    // Timer untuk menunggu scanner selesai memberikan data
-    var typingTimer;
-    // Timeout setelah 1 detik dari input terakhir
-    var doneTypingInterval = 1000;
+    var debounceTimer;
 
     function periksaBarcodeOtomatis(input) {
-      // Menghapus timer sebelumnya
-      clearTimeout(typingTimer);
-      // 
       var barcodeCheck = input.value;
       var barcodereal = document.getElementById('barcodereal').value;
-      // 
-      if (barcodeCheck) {
-        typingTimer = setTimeout(function() {
-          simpanBarcodeKeDatabase(barcodeCheck); // Panggil fungsi untuk menyimpan barcode ke database
-        }, doneTypingInterval);
+
+      if (debounceTimer) {
+        clearTimeout(debounceTimer);
       }
 
+      debounceTimer = setTimeout(function() {
+        if (barcodeCheck !== '') {
+          if (barcodeCheck === barcodereal) {
+            document.getElementById('pesan').innerHTML = "<font color='green' size='12'><b>Barcode Sesuai</b></font>";
+            document.getElementById('status').value = "Barcode Sesuai";
+          } else {
+            document.getElementById('pesan').innerHTML = "<font color='red' size='12'><b>Barcode Tidak Sesuai</b></font>";
+            document.getElementById('status').value = "Barcode Tidak Sesuai";
+            audio.play();
+            setTimeout(function() {
+              audio.pause();
+              audio.currentTime = 0;
+            }, 3000);
+          }
 
-      document.getElementById('barcode_input').value = barcodeCheck;
-      if (barcodeCheck !== '') {
-        if (barcodeCheck === barcodereal) {
-          document.getElementById('pesan').innerHTML = "<font color='green' size='12'><b>Barcode Sesuai</b></font>";
-          document.getElementById('status').value = "Barcode Sesuai";
-
-          // audio tidak di jalankan
-          audio.pause();
-        } else {
-          document.getElementById('pesan').innerHTML = "<font color='red' size='12'><b>Barcode Tidak Sesuai</b></font>";
-          document.getElementById('status').value = "Barcode Tidak Sesuai";
-
-          // play audio
-          audio.play();
-
-          // Hentikan audio setelah 3 detik
-          setTimeout(function() {
-            audio.pause();
-            audio.currentTime = 0; // Ulangi audio dari awal jika dimainkan lagi
-          }, 3000); // 3000 milidetik = 3 detik
-        }
-
-        function simpanBarcodeKeDatabase(barcode) {
           var status = $("#status").val();
           var idData = $("#id_data").val();
-          // barocde input berisi data dari kolom scan (barcode check)
-          var barcodeInput = $("#barcode_input").val();
+          var idPdk = $("#id_pdk").val();
           var url = "<?= base_url($role . '/prosesInputCheckBarcode') ?>";
-          if (barcodeInput !== '') {
-            $.ajax({
-              url: url,
-              type: "POST",
-              data: {
-                barcode_check: barcodeInput,
-                id_data: idData,
-                status: status
-              },
-            }).done(function(response) {
-              // Clear input field after successful submission
-              $("#barcodeCheck").val("");
-              $("#status").val("");
-            }).fail(function(xhr, status, error) {
-              // Handle error jika ada
-              console.error(xhr.responseText);
-            });
-          }
+
+          $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+              id_pdk: idPdk,
+              barcode_check: barcodeCheck,
+              id_data: idData,
+              status: status
+            },
+            success: function(response) {
+              // Optional: handle success response
+            },
+            error: function(xhr, status, error) {
+              // Optional: handle error response
+            }
+          });
+
+          setTimeout(function() {
+            window.location.reload();
+          }, 1000);
         }
-      }
+      }, 300); // Adjust the debounce delay as needed
     }
+
+    document.getElementById('barcode_check').addEventListener('input', function() {
+      periksaBarcodeOtomatis(this);
+    });
   </script>
 
 </main><!-- End #main -->

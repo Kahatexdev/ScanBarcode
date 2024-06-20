@@ -25,7 +25,7 @@
             <div class="row d-flex">
               <div class="col-6">&nbsp;</div>
               <div class="col-6 d-flex justify-content-end">
-                <a href="<?= base_url('aksesoris/dataPO/' . $id_po) ?>" class="btn btn-outline-dark mx-3"><strong> Ganti PDK</strong></a>
+                <a href="<?= base_url('aksesoris/dataPO/' . $id_po . '/' . $id_pdk) ?>" class="btn btn-outline-dark mx-3"><strong> Ganti PDK</strong></a>
 
                 <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#smallModal"><strong>+ Barcode</strong></button>
               </div>

@@ -102,7 +102,7 @@
                     <td><?= $row['buyer']; ?></td>
                     <td>
                       <!-- button detail -->
-                      <a href="<?= base_url($role . '/dataPO/' . $row['id_po']) ?>" class="btn btn-info">Detail</a>
+                      <a href="<?= base_url($role . '/dataPO/' . $row['id_po'] . '/' . $row['po']) ?>" class="btn btn-info">Detail</a>
                       <!-- button edit -->
                       <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#smallModal<?= $row['id_po'] ?>">Edit</button>
                       <!-- isi dari modal edit PO -->
