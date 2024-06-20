@@ -17,7 +17,7 @@ $routes->group('/aksesoris', ['filter' => 'aksesoris'], function ($routes) {
     $routes->get('index', 'AksesorisController::index');
     // PO
     $routes->post('prosesInputPO', 'AksesorisController::inputPO');
-    $routes->get('editPO/(:num)', 'AksesorisController::editPO/$1');
+    $routes->post('prosesEditPO/(:num)', 'AksesorisController::editPO/$1');
     $routes->get('prosesHapusPO/(:num)', 'AksesorisController::hapusPO/$1');
     $routes->get('dataPO/(:num)', 'AksesorisController::detailPO/$1');
     // PDK

@@ -49,6 +49,7 @@ class MasterInputModel extends Model
         return $this->select('master_pdk.id_pdk, master_pdk.pdk, master_input.*')
             ->where('master_pdk.id_pdk', $id_pdk)
             ->join('master_pdk', 'master_pdk.id_pdk = master_input.id_pdk')
+            ->groupBy('master_input.id_data')
             ->findAll();
     }
 
@@ -64,6 +65,15 @@ class MasterInputModel extends Model
     {
         $id = $this->select('id_pdk')->where('id_data', $idbarcode)->first();
         $res = reset($id);
+        var_dump($res);
         return $res;
+    }
+
+    public function getData($id_data)
+    {
+        return $this->where('master_input.id_data', $id_data)
+            ->join('master_pdk', 'master_input.id_pdk = master_input.id_pdk')
+            ->join('master_po', 'master_po.id_po = master_pdk.id_po')
+            ->first();
     }
 }

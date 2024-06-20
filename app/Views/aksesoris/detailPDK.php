@@ -47,8 +47,8 @@
                       <div class="modal-body">
                         <div class="form-group">
                           <label>PDK</label>
-                          <input type="text" class="form-control" name="id_po" id="id_po" value="<?= $id_po ?>" required readonly>
-                          <input type="text" class="form-control" name="id_pdk" id="id_pdk" value="<?= $id_pdk ?>" required readonly>
+                          <input type="hidden" class="form-control" name="id_po" id="id_po" value="<?= $id_po ?>" required readonly>
+                          <input type="hidden" class="form-control" name="id_pdk" id="id_pdk" value="<?= $id_pdk ?>" required readonly>
                           <input type="text" class="form-control" name="pdk" id="pdk" value="<?= $pdk ?>" required readonly>
                         </div>
                         <div class="form-group">

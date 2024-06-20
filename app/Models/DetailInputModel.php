@@ -47,10 +47,13 @@ class DetailInputModel extends Model
 
     public function getAllData($id)
     {
-        return $this->where('detail_input.id_data', $id)
+        return $this->select('master_input.barcode_real, detail_input.*')
+            ->where('detail_input.id_data', $id)
             ->join('master_input', 'master_input.id_data = detail_input.id_data')
+            ->groupBy('id_input')
             ->findAll();
     }
+
 
 
 

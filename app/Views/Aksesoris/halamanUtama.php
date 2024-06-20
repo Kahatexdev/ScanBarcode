@@ -101,10 +101,38 @@
                     <td><?= $row['po']; ?></td>
                     <td><?= $row['buyer']; ?></td>
                     <td>
-
+                      <!-- button detail -->
                       <a href="<?= base_url($role . '/dataPO/' . $row['id_po']) ?>" class="btn btn-info">Detail</a>
-                      <a href="<?= base_url($role . '/editPO/' . $row['id_po']) ?>" class="btn btn-success">Edit</a>
-
+                      <!-- button edit -->
+                      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#smallModal<?= $row['id_po'] ?>">Edit</button>
+                      <!-- isi dari modal edit PO -->
+                      <div class="modal fade" id="smallModal<?= $row['id_po'] ?>" tabindex="-1">
+                        <div class="modal-dialog modal-sm">
+                          <div class="modal-content">
+                            <form action="<?= base_url($role . '/prosesEditPO/' . $row['id_po']) ?>" method="POST">
+                              <div class="modal-header">
+                                <h5 class="modal-title"><strong>Edit PO</strong></h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="form-group">
+                                  <label>PO</label>
+                                  <input type="hidden" class="form-control" name="id_po" id="id_po" value="<?= $row['id_po'] ?>" required>
+                                  <input type="text" class="form-control" name="po" id="po" value="<?= $row['po'] ?>" required>
+                                </div>
+                                <div class="form-group">
+                                  <label>Buyer</label>
+                                  <input type="text" class="form-control" name="buyer" id="buyer" value="<?= $row['buyer'] ?>" required>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div><!--End isi modal edit PO -->
                       <!-- button delete di hide -->
                       <a href="<?= base_url($role . '/prosesHapusPO/' . $row['id_po']) ?>" class="btn btn-danger d-none">Hapus</i></a>
                     </td>
@@ -114,13 +142,10 @@
                 ?>
               </tbody>
             </table>
-
           </div>
         </div>
-
       </div>
     </div>
   </section>
-
 </main><!-- End #main -->
 <?php $this->endSection(); ?>

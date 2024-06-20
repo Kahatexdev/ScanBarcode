@@ -68,18 +68,21 @@ class AksesorisController extends BaseController
             return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('error', 'Data PO Sudah Ada!');;
         }
     }
-    // proses input PO
-    public function edittPO($id_po)
+    // proses edit PO
+    public function editPO($id_po)
     {
-        $dataPo = $this->poModel->getPo();
+        $id_po     = $this->request->getPost("id_po");
+        $po     = $this->request->getPost("po");
+        $buyer  = $this->request->getPost("buyer");
         $data = [
-            '',
+            'po' => $po,
+            'buyer' => $buyer
         ];
-        $insert = $this->poModel->insert($data);
-        if ($insert) {
-            return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('success', 'Data Berhasil Di Input');
+        $update = $this->poModel->update($id_po, $data);
+        if ($update) {
+            return redirect()->to(base_url(session()->get('role') . ''))->withInput()->with('success', 'Data Berhasil Di Update');
         } else {
-            return redirect()->to(base_url(session()->get('role')))->withInput()->with('error', 'Terjadi Kesalahan Saat Menginput Data');
+            return redirect()->to(base_url(session()->get('role')))->withInput()->with('error', 'Terjadi Kesalahan Saat Mengupdate Data');
         }
     }
     // proses input PO
@@ -144,11 +147,11 @@ class AksesorisController extends BaseController
         }
     }
 
-    public function scanbarcode($idbarcode)
+    public function scanbarcode($id_data)
     {
-        $idpdk = $this->inputModel->getIdPdk($idbarcode);
-        $pdk = $this->pdkModel->getData($idpdk);
-        $barcodedata = $this->detailModel->getAllData($idbarcode);
+        // $idpdk = $this->inputModel->getIdPdk($id_data);
+        $pdk = $this->inputModel->getData($id_data);
+        $barcodedata = $this->detailModel->getAllData($id_data);
         $data = [
             'role' => session()->get('role'),
             'title' => 'Scan Barcode',
@@ -160,22 +163,21 @@ class AksesorisController extends BaseController
 
     public function inputCheckBarcode()
     {
-        $id_pdk = $this->request->getPost("id_pdk");
         $barcode_check = $this->request->getPost("barcode_check");
         $id_data = $this->request->getPost("id_data");
         $status = $this->request->getPost("status");
         $data = [
             'id_data' => $id_data,
-            'barcode_check' => $barcode_check,
+            'barcode_cek' => $barcode_check,
             'status' => $status,
             'created_at' => date('Y-m-d H:i:s'),
             'admin' => session()->get('username'),
         ];
         $insert = $this->detailModel->insert($data);
         if ($insert) {
-            return redirect()->to(base_url(session()->get('role') . '/scanBarcode/' . $id_pdk));
+            return redirect()->to(base_url(session()->get('role') . '/scanBarcode/' . $id_data));
         } else {
-            return redirect()->to(base_url(session()->get('role') . '/scanBarcode/' . $id_pdk))->withInput()->with('error', 'Terjadi Kesalahan Saat Menginput Data');
+            return redirect()->to(base_url(session()->get('role') . '/scanBarcode/' . $id_data))->withInput()->with('error', 'Terjadi Kesalahan Saat Menginput Data');
         }
     }
 
