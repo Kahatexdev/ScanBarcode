@@ -109,7 +109,7 @@ class AksesorisController extends BaseController
             'po'        => $po,
             'detailpo'  => $detailPo,
         ];
-        return view('Aksesoris/detailPO', $data);
+        return view('aksesoris/detailPO', $data);
     }
 
     // proses input PDK
@@ -163,7 +163,7 @@ class AksesorisController extends BaseController
             'po'        => $po['po'],
             'detailpdk' => $detailPdk,
         ];
-        return view('Aksesoris/detailPDK', $data);
+        return view('aksesoris/detailPDK', $data);
     }
 
     // proses input Master Barcode
