@@ -37,7 +37,7 @@ class MasterPDK extends Migration
             ],
         ]);
         $this->forge->addKey('id_pdk', true);
-        $this->forge->addForeignKey('id_po', 'master_po', 'id_po', 'RESTRICT', 'CASCADE');
+        $this->forge->addForeignKey('id_po', 'master_po', 'id_po', 'CASCADE', 'RESTRICT');
         $this->forge->createTable('master_pdk');
     }
 

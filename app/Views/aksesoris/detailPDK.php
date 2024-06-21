@@ -25,16 +25,35 @@
             <div class="row d-flex">
               <div class="col-6">&nbsp;</div>
               <div class="col-6 d-flex justify-content-end">
-                <a href="<?= base_url('aksesoris/dataPO/' . $id_po . '/' . $id_pdk) ?>" class="btn btn-outline-dark mx-3"><strong> Ganti PDK</strong></a>
+                <a href="<?= base_url('aksesoris/dataPO/' . $id_po . '/' . $po) ?>" class="btn btn-outline-dark mx-3"><strong> Ganti PDK</strong></a>
 
                 <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#smallModal"><strong>+ Barcode</strong></button>
               </div>
-              <?php if (session()->has('succes')) : ?>
-                <div style="color: green;"><?php echo session('succes'); ?></div>
+              <!-- sweetalert -->
+              <?php if (session()->getFlashdata('success')) : ?>
+                <script>
+                  $(document).ready(function() {
+                    Swal.fire({
+                      icon: 'success',
+                      title: 'Success!',
+                      text: '<?= session()->getFlashdata('success') ?>',
+                    });
+                  });
+                </script>
               <?php endif; ?>
-              <?php if (session()->has('error')) : ?>
-                <div style="color: red;"><?php echo session('error'); ?></div>
+
+              <?php if (session()->getFlashdata('error')) : ?>
+                <script>
+                  $(document).ready(function() {
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Error!',
+                      text: '<?= session()->getFlashdata('error') ?>',
+                    });
+                  });
+                </script>
               <?php endif; ?>
+              <!-- end sweetalert -->
               <!-- isi dari modal +PO -->
               <div class="modal fade" id="smallModal" tabindex="-1">
                 <div class="modal-dialog modal-sm">

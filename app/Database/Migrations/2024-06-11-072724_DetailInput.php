@@ -37,7 +37,7 @@ class DetailInput extends Migration
             ],
         ]);
         $this->forge->addKey('id_input', true);
-        $this->forge->addForeignKey('id_data', 'master_input', 'id_data', 'RESTRICT', 'CASCADE');
+        $this->forge->addForeignKey('id_data', 'master_input', 'id_data', 'CASCADE', 'RESTRICT');
         $this->forge->createTable('detail_input');
     }
 
