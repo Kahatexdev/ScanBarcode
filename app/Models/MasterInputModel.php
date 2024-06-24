@@ -64,7 +64,7 @@ class MasterInputModel extends Model
     public function getData($id_data)
     {
         return $this->where('master_input.id_data', $id_data)
-            ->join('master_pdk', 'master_input.id_pdk = master_input.id_pdk')
+            ->join('master_pdk', 'master_pdk.id_pdk = master_input.id_pdk')
             ->join('master_po', 'master_po.id_po = master_pdk.id_po')
             ->first();
     }

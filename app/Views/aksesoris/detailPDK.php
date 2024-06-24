@@ -98,7 +98,10 @@
               <tbody style="text-align: center;">
                 <?php
                 $no = 1;
-                foreach ($detailpdk as $row) : ?>
+                foreach ($detailpdk as $row) :
+                  $id_data = $row['id_data'];
+                  $qty_scan = $qtyScanResults[$id_data] ?? 0; // Mengambil qty_scan dari array qtyScanResults
+                ?>
                   <tr>
                     <th scope="row"><?= $no++; ?></th>
                     <td><?= $row['barcode_real']; ?></td>

@@ -59,7 +59,7 @@ class ExcelController extends BaseController
 
         // Judul
         $sheet->setCellValue('A1', 'REPORT SCAN BARCODE');
-        $sheet->mergeCells('A1:F1');
+        $sheet->mergeCells('A1:H1');
         $sheet->getStyle('A1')->getFont()->setBold(true)->setSize(16);
         $sheet->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
@@ -68,20 +68,22 @@ class ExcelController extends BaseController
         $sheet->setCellValue('A4', 'Buyer');
         $sheet->setCellValue('B3', ': ' . $po['po']);
         $sheet->setCellValue('B4', ': ' . $po['buyer']);
-        $sheet->setCellValue('E3', 'Qty Scan');
-        $sheet->setCellValue('E4', 'Qty Sesuai');
-        $sheet->setCellValue('E5', 'Qty Tidak Sesuai');
-        $sheet->setCellValue('F3', ': ' . $scan);
-        $sheet->setCellValue('F4', ': ' . $sesuai);
-        $sheet->setCellValue('F5', ': ' . $tdkSesuai);
+        $sheet->setCellValue('G3', 'Qty Scan');
+        $sheet->setCellValue('G4', 'Qty Sesuai');
+        $sheet->setCellValue('G5', 'Qty Tidak Sesuai');
+        $sheet->setCellValue('H3', ': ' . $scan);
+        $sheet->setCellValue('H4', ': ' . $sesuai);
+        $sheet->setCellValue('H5', ': ' . $tdkSesuai);
 
         // Set header
         $sheet->setCellValue('A6', 'No');
-        $sheet->setCellValue('B6', 'PDK');
-        $sheet->setCellValue('C6', 'No Order');
-        $sheet->setCellValue('D6', 'Barcode Real');
-        $sheet->setCellValue('E6', 'Barcode Scan');
-        $sheet->setCellValue('F6', 'Status');
+        $sheet->setCellValue('B6', 'Tanggal Scan');
+        $sheet->setCellValue('C6', 'PDK');
+        $sheet->setCellValue('D6', 'No Order');
+        $sheet->setCellValue('E6', 'Barcode Real');
+        $sheet->setCellValue('F6', 'Barcode Scan');
+        $sheet->setCellValue('G6', 'Status');
+        $sheet->setCellValue('H6', 'Admin');
 
         // Gaya untuk header
         $headerStyle = [
@@ -97,7 +99,7 @@ class ExcelController extends BaseController
                 ],
             ],
         ];
-        $sheet->getStyle('A6:F6')->applyFromArray($headerStyle);
+        $sheet->getStyle('A6:H6')->applyFromArray($headerStyle);
 
         // Gaya untuk data
         $dataStyle = [
@@ -116,22 +118,33 @@ class ExcelController extends BaseController
         $no = 1;
         foreach ($data as $item) {
             $sheet->setCellValue('A' . $row, $no);
-            $sheet->setCellValue('B' . $row, $item['pdk']);
-            $sheet->setCellValue('C' . $row, $item['no_order']);
-            $sheet->setCellValue('D' . $row, $item['barcode_real']);
-            $sheet->setCellValue('E' . $row, $item['barcode_cek']);
-            $sheet->setCellValue('F' . $row, $item['status']);
-            $sheet->getStyle('A' . $row . ':F' . $row)->applyFromArray($dataStyle);
+            $sheet->setCellValue('B' . $row, $item['created_date']);
+            $sheet->setCellValue('C' . $row, $item['pdk']);
+            $sheet->setCellValue('D' . $row, $item['no_order']);
+            $sheet->setCellValue('E' . $row, $item['barcode_real']);
+            $sheet->setCellValue('F' . $row, $item['barcode_cek']);
+            $sheet->setCellValue('G' . $row, $item['status']);
+            $sheet->setCellValue('H' . $row, $item['admin']);
+            $sheet->getStyle('A' . $row . ':H' . $row)->applyFromArray($dataStyle);
             $row++;
             $no++;
         }
 
-        $writer = new Xlsx($spreadsheet);
+        // Set response headers
         $filename = 'Report_PO_' . $po['po'] . '.xlsx';
 
-        // Save the file to the server and prompt download
-        $writer->save(WRITEPATH . $filename);
+        // Send the file to browser for download
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+        header('Cache-Control: max-age=1');
+        header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+        header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+        header('Cache-Control: cache, must-revalidate');
+        header('Pragma: public');
 
-        return $this->response->download(WRITEPATH . $filename, null)->setFileName($filename);
+        $writer = new Xlsx($spreadsheet);
+        $writer->save('php://output');
+        exit;
     }
 }

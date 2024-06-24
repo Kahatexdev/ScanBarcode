@@ -153,7 +153,23 @@ class AksesorisController extends BaseController
         $po  = $this->poModel->getNomorPO($id_po);
         $detailPdk  = $this->inputModel->getDetailPDK($id_pdk);
         $pdk        = $this->pdkModel->getPDK($id_pdk);
-        $qtyScan    = $this->detailModel->getQtyScanBarcode($id_pdk);
+
+        // Inisialisasi array untuk menyimpan hasil qtyScan
+        $qtyScanResults = [];
+
+        if (!empty($detailPdk)) {
+            // Iterasi melalui setiap item dalam $detailPdk
+            foreach ($detailPdk as $item) {
+                // Mengambil id_data dari item
+                $id_data = $item['id_data'];
+
+                // Mendapatkan jumlah scan barcode berdasarkan id_data
+                $qtyScan = $this->detailModel->getQtyScanBarcode($id_data);
+
+                // Menyimpan hasil qtyScan ke dalam array dengan id_data sebagai key
+                $qtyScanResults[$id_data] = $qtyScan;
+            }
+        }
 
         $data = [
             'id_po'     => $id_po,
@@ -163,7 +179,7 @@ class AksesorisController extends BaseController
             'pdk'       => $pdk,
             'po'        => $po['po'],
             'detailpdk' => $detailPdk,
-            'qty_scan' => $qtyScan,
+            'qtyScanResults' => $qtyScanResults // Menyimpan hasil qtyScan ke dalam data
         ];
         return view('aksesoris/detailPDK', $data);
     }

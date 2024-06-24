@@ -75,7 +75,7 @@ class DetailInputModel extends Model
     //report excel
     public function getDataExcel($id_po)
     {
-        return $this->select('master_po.*, master_pdk.id_pdk, master_pdk.pdk, master_pdk.no_order, master_input.*, detail_input.*')
+        return $this->select('master_po.*, master_pdk.id_pdk, master_pdk.pdk, master_pdk.no_order, master_input.*, detail_input.*, DATE(detail_input.created_at) as created_date')
             ->where('master_po.id_po', $id_po)
             ->join('master_input', 'master_input.id_data = detail_input.id_data')
             ->join('master_pdk', 'master_pdk.id_pdk = master_input.id_pdk')
@@ -132,15 +132,11 @@ class DetailInputModel extends Model
     }
 
     //qty scan per barcode
-    public function getQtyScanBarcode($id_pdk)
+    public function getQtyScanBarcode($id_data)
     {
         $query = $this->select('COUNT(detail_input.id_input) AS qty_scan')
-            ->where('master_pdk.id_pdk', $id_pdk)
-            ->join('master_input', 'master_input.id_data = detail_input.id_data')
-            ->join('master_pdk', 'master_pdk.id_pdk = master_input.id_pdk')
-            ->join('master_po', 'master_po.id_po = master_pdk.id_po')
+            ->where('detail_input.id_data', $id_data)
             ->get();
-
         $result = $query->getRow(); // Assuming a single result per PO
 
         return $result ? $result->qty_scan : 0; // Return the quantity or 0 if no result      
