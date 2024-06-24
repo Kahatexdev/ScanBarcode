@@ -152,6 +152,7 @@ class AksesorisController extends BaseController
     {
         $detailPdk  = $this->inputModel->getDetailPDK($id_pdk);
         $pdk        = $this->pdkModel->getPDK($id_pdk);
+        $qtyScan    = $this->detailModel->getQtyScanBarcode($id_pdk);
 
         $data = [
             'id_po'     => $id_po,
@@ -160,6 +161,7 @@ class AksesorisController extends BaseController
             'id_pdk'    => $id_pdk,
             'pdk'       => $pdk,
             'detailpdk' => $detailPdk,
+            'qty_scan' => $qtyScan,
         ];
         return view('aksesoris/detailPDK', $data);
     }

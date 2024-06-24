@@ -130,4 +130,19 @@ class DetailInputModel extends Model
         return $result ? $result->qty_tdk_sesuai : 0; // Return the quantity or 0 if no result 
 
     }
+
+    //qty scan per barcode
+    public function getQtyScanBarcode($id_pdk)
+    {
+        $query = $this->select('COUNT(detail_input.id_input) AS qty_scan')
+            ->where('master_pdk.id_pdk', $id_pdk)
+            ->join('master_input', 'master_input.id_data = detail_input.id_data')
+            ->join('master_pdk', 'master_pdk.id_pdk = master_input.id_pdk')
+            ->join('master_po', 'master_po.id_po = master_pdk.id_po')
+            ->get();
+
+        $result = $query->getRow(); // Assuming a single result per PO
+
+        return $result ? $result->qty_scan : 0; // Return the quantity or 0 if no result      
+    }
 }

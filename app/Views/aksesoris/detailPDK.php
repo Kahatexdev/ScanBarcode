@@ -83,7 +83,7 @@
                   <tr>
                     <th scope="row"><?= $no++; ?></th>
                     <td><?= $row['barcode_real']; ?></td>
-                    <td></td>
+                    <td><?= $qty_scan ?></td>
                     <td><a href="<?= base_url($role . '/scanBarcode/' . $row['id_data']) ?>" class="btn btn-info">Scan</a></td>
                   </tr>
                 <?php
