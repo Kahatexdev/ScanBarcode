@@ -9,7 +9,7 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
     <!-- Favicons -->
-    <link href="<?= base_url('assets/img/favicon.png') ?>" rel="icon">
+    <link href="<?= base_url('assets/img/barcode4.png') ?>" rel="icon">
     <link href="<?= base_url('assets/img/apple-touch-icon.png') ?>" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
@@ -37,7 +37,7 @@
                         <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
                             <div class="d-flex justify-content-center py-4">
                                 <a href="<?= base_url('') ?>" class="logo d-flex align-items-center w-auto">
-                                    <img src="<?= base_url('assets/img/logo.png') ?>" alt="">
+                                    <img src="<?= base_url('assets/img/barcode4.png') ?>" alt="">
                                     <span class="d-none d-lg-block">Scan Barcode</span>
                                 </a>
                             </div><!-- End Logo -->
@@ -75,7 +75,7 @@
                             </div>
 
                             <div class="credits">
-                                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                                Copyright © 2024 RnD BP System
                             </div>
 
                         </div>

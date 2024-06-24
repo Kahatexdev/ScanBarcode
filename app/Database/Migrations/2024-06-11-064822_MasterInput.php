@@ -29,7 +29,7 @@ class MasterInput extends Migration
             ],
         ]);
         $this->forge->addKey('id_data', true);
-        $this->forge->addForeignKey('id_pdk', 'master_pdk', 'id_pdk', 'RESTRICT', 'CASCADE');
+        $this->forge->addForeignKey('id_pdk', 'master_pdk', 'id_pdk', 'CASCADE', 'RESTRICT');
         $this->forge->createTable('master_input');
     }
 

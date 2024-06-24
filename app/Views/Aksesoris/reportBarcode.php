@@ -100,7 +100,7 @@
                                         <td><?= $row['po']; ?></td>
                                         <td><?= $row['buyer']; ?></td>
                                         <td>
-                                            <a href="<?= base_url($role . '/excelReport/' . $row['id_po']) ?>"><i class="ri-file-excel-2-line" style="font-size: 32px;"></i></a>
+                                            <a href="<?= base_url($role . '/excelReport/' . $row['id_po']) ?>" class="btn btn-success">EXCEL</a>
                                         </td>
                                     </tr>
                                 <?php
